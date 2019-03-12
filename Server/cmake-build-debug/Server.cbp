@@ -34,6 +34,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/neko/projects/studia/AGHunting/Server/src"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -54,6 +55,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/neko/projects/studia/AGHunting/Server/src"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -78,7 +80,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/neko/projects/studia/AGHunting/Server/main.c">
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/main.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/tcp_socket.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/tcp_socket.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/server.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/server.h">
 			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/home/neko/projects/studia/AGHunting/Server/CMakeLists.txt">

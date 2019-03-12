@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Server.dir/main.c.o"
+  "CMakeFiles/Server.dir/src/main.c.o"
+  "CMakeFiles/Server.dir/src/network/tcp_socket.c.o"
+  "CMakeFiles/Server.dir/src/server.c.o"
   "Server.pdb"
   "Server"
 )
