@@ -1,0 +1,3 @@
+/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/Server.dir
+/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/edit_cache.dir
