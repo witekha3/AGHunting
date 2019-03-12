@@ -34,7 +34,12 @@ typedef enum TCP_Sock_Error {
     ERR_NONE,
     ERR_OS_NOT_SUPPORTED,
     ERR_CANNOT_CREATE_SOCKET,
-    ERR_INVALID_ADDR
+    ERR_INVALID_ADDR,
+    ERR_CANNOT_BIND_SOCKET,
+    ERR_CANNOT_LISTEN,
+    ERR_CANNOT_BIND_UNINITIALIZED_SOCK,
+    ERR_CANNOT_BIND_CLIENT_MODE_SOCK,
+    ERR_FAILED_TO_ACCEPT_CONNECTION
 } TCP_SOCK_ERROR;
 
 typedef enum TCP_Sock_Type {
@@ -48,13 +53,13 @@ typedef struct TCP_Socket {
     HOST           host;
 
     bool           is_initialized;
-    bool           is_bind;
+    bool           is_listening;
     bool           is_connected;
 
     TCP_SOCK_TYPE  type;
     TCP_SOCK_ERROR last_error;
 
-    struct sockaddr_in    saddr;
+    struct sockaddr_in saddr;
 } TCP_SOCKET;
 
 
@@ -62,6 +67,13 @@ typedef struct TCP_Socket {
 extern bool tcp_socket_create(TCP_SOCKET*, HOST, TCP_SOCK_ERROR*);
 extern bool tcp_socket_close(TCP_SOCKET*);
 
-extern bool tcp_socket_bind_and_listen(TCP_SOCKET*, int);
+// server
+extern bool tcp_socket_bind_and_listen(TCP_SOCKET*, int, TCP_SOCK_ERROR*);
+extern bool tcp_socket_accept(TCP_SOCKET*, TCP_SOCKET*, TCP_SOCK_ERROR*);
+
+// client
+
+// both
+extern int tcp_socket_recv(TCP_SOCKET*, char*, size_t, TCP_SOCK_ERROR*);
 
 #endif //SERVER_TCP_SOCKET_H
