@@ -24,12 +24,22 @@ public class Animat : MonoBehaviour
         RunSide = Input.GetAxis("Horizontal");
         animator.SetFloat("RunSide", RunSide);
 
-        Jump = Input.GetAxis("Jump");
-        animator.SetFloat("Jump", Jump);
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
-          //  animator.Play("Jump", 1, 0f);
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            animator.SetBool("Attack", true);
+        }
+        else
+        {
+            animator.SetBool("Attack", false);
         }
     }
 }
