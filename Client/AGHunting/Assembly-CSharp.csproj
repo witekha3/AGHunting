@@ -60,7 +60,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\AfterburnerPhysicsForce.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\ExplosionFireAndDebris.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\ExplosionPhysicsForce.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\ExtinguishableParticleSystem.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\FireLight.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\Hose.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\ParticleSystemMultiplier.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\SmokeParticles.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\WaterHoseParticles.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Dragons\Scripts\animator_controller.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Dragons\Scripts\animator_settor.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Dragons\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Dragons\Scripts\player_attack.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Dragons\Scripts\player_movement.cs" />
+    <Compile Include="Assets\Models\Monsters\BattleDragon\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Animat.cs" />
+    <Compile Include="Assets\Scripts\Attack.cs" />
+    <Compile Include="Assets\Scripts\MonsterMovement.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\Rotation.cs" />
     <None Include="Assets\Models\Bush\Blender FIles\IF YOU WANT TO EDIT SOMETHING.txt" />
@@ -68,15 +85,19 @@
     <None Include="Assets\Models\Trees\FBX Files\IF YOU WANT TO DRAG AND DROP INTO UNITY.txt" />
     <None Include="Assets\Models\Grass\Blender FIles\IF YOU WANT TO EDIT SOMETHING.txt" />
     <None Include="Assets\Models\Flowers\Blender FIles\IF YOU WANT TO EDIT SOMETHING.txt" />
-    <None Include="Assets\Meshtint Free Knight\www.meshtint.com.txt" />
+    <None Include="Assets\Models\Meshtint Free Knight\www.meshtint.com.txt" />
     <None Include="Assets\Models\Grass\FBX Files\IF YOU WANT TO DRAG AND DROP INTO UNITY.txt" />
+    <None Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
     <None Include="Assets\Models\Mushrooms\FBX Files\IF YOU WANT TO DRAG AND DROP INTO UNITY.txt" />
     <None Include="Assets\Models\Bush\FBX Files\IF YOU WANT TO DRAG AND DROP INTO UNITY.txt" />
+    <None Include="Assets\Models\Monsters\BattleDragon\readme.txt" />
     <None Include="Assets\Models\Stone\Blender Files\IF YOU WANT TO EDIT SOMETHING.txt" />
+    <None Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
     <None Include="Assets\Models\Flowers\FBX Files\IF YOU WANT TO DRAG AND DROP INTO UNITY.txt" />
-    <None Include="Assets\Meshtint Free Knight\Read me.txt" />
+    <None Include="Assets\Models\Meshtint Free Knight\Read me.txt" />
     <None Include="Assets\Models\Stone\FBX Files\IF YOU WANT TO DRAG AND DROP INTO UNITY.txt" />
     <None Include="Assets\Models\Trees\Blender Files\IF YOU WANT TO EDIT SOMETHING.txt" />
+    <None Include="Assets\Models\Monsters\BattleDragon\Colosseum\Dust\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/WITEK/Desktop/studia Witek/Testy/projekty/AGHunting/Client/AGHunting/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
