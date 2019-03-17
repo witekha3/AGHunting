@@ -123,6 +123,33 @@ Server/fast:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
 .PHONY : Server/fast
 
+libs/log/src/log.o: libs/log/src/log.c.o
+
+.PHONY : libs/log/src/log.o
+
+# target to build an object file
+libs/log/src/log.c.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/libs/log/src/log.c.o
+.PHONY : libs/log/src/log.c.o
+
+libs/log/src/log.i: libs/log/src/log.c.i
+
+.PHONY : libs/log/src/log.i
+
+# target to preprocess a source file
+libs/log/src/log.c.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/libs/log/src/log.c.i
+.PHONY : libs/log/src/log.c.i
+
+libs/log/src/log.s: libs/log/src/log.c.s
+
+.PHONY : libs/log/src/log.s
+
+# target to generate assembly for a file
+libs/log/src/log.c.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/libs/log/src/log.c.s
+.PHONY : libs/log/src/log.c.s
+
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -149,6 +176,33 @@ src/main.s: src/main.c.s
 src/main.c.s:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/main.c.s
 .PHONY : src/main.c.s
+
+src/network/connection.o: src/network/connection.c.o
+
+.PHONY : src/network/connection.o
+
+# target to build an object file
+src/network/connection.c.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/connection.c.o
+.PHONY : src/network/connection.c.o
+
+src/network/connection.i: src/network/connection.c.i
+
+.PHONY : src/network/connection.i
+
+# target to preprocess a source file
+src/network/connection.c.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/connection.c.i
+.PHONY : src/network/connection.c.i
+
+src/network/connection.s: src/network/connection.c.s
+
+.PHONY : src/network/connection.s
+
+# target to generate assembly for a file
+src/network/connection.c.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/connection.c.s
+.PHONY : src/network/connection.c.s
 
 src/network/tcp_socket.o: src/network/tcp_socket.c.o
 
@@ -177,32 +231,59 @@ src/network/tcp_socket.c.s:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/tcp_socket.c.s
 .PHONY : src/network/tcp_socket.c.s
 
-src/server.o: src/server.c.o
+src/server-api.o: src/server-api.c.o
 
-.PHONY : src/server.o
+.PHONY : src/server-api.o
 
 # target to build an object file
-src/server.c.o:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/server.c.o
-.PHONY : src/server.c.o
+src/server-api.c.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/server-api.c.o
+.PHONY : src/server-api.c.o
 
-src/server.i: src/server.c.i
+src/server-api.i: src/server-api.c.i
 
-.PHONY : src/server.i
+.PHONY : src/server-api.i
 
 # target to preprocess a source file
-src/server.c.i:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/server.c.i
-.PHONY : src/server.c.i
+src/server-api.c.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/server-api.c.i
+.PHONY : src/server-api.c.i
 
-src/server.s: src/server.c.s
+src/server-api.s: src/server-api.c.s
 
-.PHONY : src/server.s
+.PHONY : src/server-api.s
 
 # target to generate assembly for a file
-src/server.c.s:
-	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/server.c.s
-.PHONY : src/server.c.s
+src/server-api.c.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/server-api.c.s
+.PHONY : src/server-api.c.s
+
+src/ui/web_interface.o: src/ui/web_interface.c.o
+
+.PHONY : src/ui/web_interface.o
+
+# target to build an object file
+src/ui/web_interface.c.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/ui/web_interface.c.o
+.PHONY : src/ui/web_interface.c.o
+
+src/ui/web_interface.i: src/ui/web_interface.c.i
+
+.PHONY : src/ui/web_interface.i
+
+# target to preprocess a source file
+src/ui/web_interface.c.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/ui/web_interface.c.i
+.PHONY : src/ui/web_interface.c.i
+
+src/ui/web_interface.s: src/ui/web_interface.c.s
+
+.PHONY : src/ui/web_interface.s
+
+# target to generate assembly for a file
+src/ui/web_interface.c.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/ui/web_interface.c.s
+.PHONY : src/ui/web_interface.c.s
 
 # Help Target
 help:
@@ -213,15 +294,24 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Server"
 	@echo "... edit_cache"
+	@echo "... libs/log/src/log.o"
+	@echo "... libs/log/src/log.i"
+	@echo "... libs/log/src/log.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/network/connection.o"
+	@echo "... src/network/connection.i"
+	@echo "... src/network/connection.s"
 	@echo "... src/network/tcp_socket.o"
 	@echo "... src/network/tcp_socket.i"
 	@echo "... src/network/tcp_socket.s"
-	@echo "... src/server.o"
-	@echo "... src/server.i"
-	@echo "... src/server.s"
+	@echo "... src/server-api.o"
+	@echo "... src/server-api.i"
+	@echo "... src/server-api.s"
+	@echo "... src/ui/web_interface.o"
+	@echo "... src/ui/web_interface.i"
+	@echo "... src/ui/web_interface.s"
 .PHONY : help
 
 

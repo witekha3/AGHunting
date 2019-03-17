@@ -1,33 +1,23 @@
-#include <stdio.h>
+// ENTRY POINT
 
-#include <network/tcp_socket.h>
+#include <log/log.h>
+#include <server-api.h>
+
+#define DEFAULT_ADDR "127.0.0.1"
+#define DEFAULT_PORT 8080
 
 int main(int argc, char** argv) {
 
-    TCP_SOCKET     s;
-    TCP_SOCK_ERROR err;
-    HOST           h = { "127.0.0.1", 8080 };
+    Host h = { DEFAULT_ADDR, DEFAULT_PORT };
 
-    if (!tcp_socket_create(&s, h, &err)) {
-        fprintf(stderr, "Cannot create socket! %d", err);
+    if (!init_server(h)) {
+        log_fatal("Server failed to initialize, closing");
         return -1;
+
     }
 
-    if (!tcp_socket_bind_and_listen(&s, 5, &err)) {
-        fprintf(stderr, "Cannot bind socket! %d\n", err);
-        return -2;
-    }
+    start_server();
+    shutdown_server();
 
-    fprintf(stdout, "$ server is listening on %s:%d\n", h.addr, h.port);
-
-    TCP_SOCKET client;
-
-    if (!tcp_socket_accept(&s, &client, &err)) {
-        fprintf(stderr, "Cannot to accept connection %d\n", err);
-    }
-
-    fprintf(stdout, "$ received a connection\n\n");
-
-    tcp_socket_close(&s);
     return 0;
 }

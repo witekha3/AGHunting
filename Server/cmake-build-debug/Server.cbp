@@ -34,7 +34,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DSTATIC_FILES=&quot;/home/neko/projects/studia/AGHunting/Server/src/ui&quot;"/>
 					<Add directory="/home/neko/projects/studia/AGHunting/Server/src"/>
+					<Add directory="/home/neko/projects/studia/AGHunting/Server/libs/includes"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -55,7 +57,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DSTATIC_FILES=&quot;/home/neko/projects/studia/AGHunting/Server/src/ui&quot;"/>
 					<Add directory="/home/neko/projects/studia/AGHunting/Server/src"/>
+					<Add directory="/home/neko/projects/studia/AGHunting/Server/libs/includes"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -80,7 +84,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/libs/log/src/log.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/libs/log/src/log.h">
+			<Option target="Server"/>
+		</Unit>
 		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/main.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/connection.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/connection.h">
 			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/tcp_socket.c">
@@ -89,10 +105,16 @@
 		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/tcp_socket.h">
 			<Option target="Server"/>
 		</Unit>
-		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/server.c">
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/server-api.c">
 			<Option target="Server"/>
 		</Unit>
-		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/server.h">
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/server-api.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/ui/web_interface.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/ui/web_interface.h">
 			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/home/neko/projects/studia/AGHunting/Server/CMakeLists.txt">

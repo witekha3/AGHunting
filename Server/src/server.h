@@ -1,20 +1,31 @@
 //
-// Created by neko on 12.03.19.
+// Created by neko on 16.03.19.
 //
 
 #ifndef SERVER_SERVER_H
 #define SERVER_SERVER_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+#include <vector/vector.h>
 
+#include <network/host.h>
 #include <network/tcp_socket.h>
+#include <network/connection.h>
 
-typedef struct Server {
+#include <ui/web_interface.h>
 
-} SERVER;
+typedef struct {
+    Host           host;
+    TCP_Socket     server_socket;
+    TCP_SOCK_ERROR last_tcp_err;
 
+    bool is_initialized;
+    bool is_running;
+
+    short active_connections;
+
+    VECTOR(Connection) connections;
+    VECTOR(pthread_t)  threads;
+} AH_Server;
 
 
 #endif //SERVER_SERVER_H

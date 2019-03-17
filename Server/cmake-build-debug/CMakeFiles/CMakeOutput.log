@@ -199,3 +199,19 @@ make[1]: Opuszczenie katalogu '/home/neko/projects/studia/AGHunting/Server/cmake
     Feature record: C_FEATURE:0c_restrict
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_19cfc/fast"
+make[1]: Wejście do katalogu '/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_19cfc.dir/build.make CMakeFiles/cmTC_19cfc.dir/build
+make[2]: Wejście do katalogu '/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_19cfc.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -std=gnu11 -o CMakeFiles/cmTC_19cfc.dir/CheckIncludeFile.c.o   -c /home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_19cfc
+/home/neko/clion/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_19cfc.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_19cfc.dir/CheckIncludeFile.c.o  -o cmTC_19cfc 
+make[2]: Opuszczenie katalogu '/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/CMakeTmp'
+make[1]: Opuszczenie katalogu '/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+

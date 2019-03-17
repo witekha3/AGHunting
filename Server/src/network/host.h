@@ -7,9 +7,9 @@
 
 #include <stdint.h>
 
-typedef struct Host {
-    const char* addr;
-    uint16_t    port;
-} HOST;
+typedef struct {
+    char     addr[16];
+    uint16_t port;
+} Host;
 
 #endif //SERVER_HOST_H

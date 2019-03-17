@@ -1,0 +1,6 @@
+[submodule "Server/libs/log"]
+	path = Server/libs/log
+	url = https://github.com/rxi/log.c.git
+[submodule "Server/libs/vector"]
+	path = Server/libs/vector
+	url = https://github.com/eteran/c-vector.git

@@ -5,13 +5,14 @@
 #include <network/tcp_socket.h>
 
 // ONLY FOR USE INSIDE TCP_SOCKET_... FUNCTIONS!
-#define SOCK_ERR(err_code) if (err != NULL) *err = err_code; \
+#define SET_ERR(err_code) if (err != NULL) *err = err_code;
+#define SOCK_ERR(err_code) SET_ERR(err_code);\
                            return false;
 #define SET_INTERNAL_ERR(err_code) sock->is_initialized=false; \
                                    sock->last_error = err_code;
 
 
-bool tcp_socket_create(TCP_SOCKET* sock, HOST host, TCP_SOCK_ERROR* err) {
+bool tcp_socket_create(TCP_Socket* sock, Host host, TCP_SOCK_ERROR* err) {
     #ifdef OS_NOT_SUPPORTED
         SET_INTERNAL_ERR(ERR_OS_NOT_SUPPORTED);
         SOCK_ERR(ERR_OS_NOT_SUPPORTED);
@@ -41,25 +42,30 @@ bool tcp_socket_create(TCP_SOCKET* sock, HOST host, TCP_SOCK_ERROR* err) {
     setsockopt(sock->sock, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(int));
 
     // fill sockaddr structure
-    sock->saddr.sin_family      = AF_INET;
-    sock->saddr.sin_port        = htons(host.port);
+    sock->saddr.sin_family = AF_INET;
+    sock->saddr.sin_port   = htons(host.port);
 
-    if (!inet_aton(host.addr, &sock->saddr.sin_addr)) {
+    int res;
+    if ((res = inet_pton(AF_INET, host.addr, &sock->saddr.sin_addr)) == 0) {
         SET_INTERNAL_ERR(ERR_INVALID_ADDR);
         SOCK_ERR(ERR_INVALID_ADDR);
+    } else if (res == -1) {
+        SET_INTERNAL_ERR(ERR_INET_PTON_INVALID_FAMILY);
+        SOCK_ERR(ERR_INET_PTON_INVALID_FAMILY);
     }
 
     return true;
 }
 
-bool tcp_socket_close(TCP_SOCKET* sock) {
+bool tcp_socket_close(TCP_Socket* sock) {
     sock->is_initialized = false;
+    shutdown(sock->sock, SHUT_RD);
     return !sock_close(sock->sock);
 }
 
 
 // server
-bool tcp_socket_bind_and_listen(TCP_SOCKET* sock, int queue, TCP_SOCK_ERROR* err) {
+bool tcp_socket_bind_and_listen(TCP_Socket* sock, int queue, TCP_SOCK_ERROR* err) {
     if (!sock->is_initialized) {
         SET_INTERNAL_ERR(ERR_CANNOT_BIND_UNINITIALIZED_SOCK);
         SOCK_ERR(ERR_CANNOT_BIND_UNINITIALIZED_SOCK);
@@ -86,24 +92,103 @@ bool tcp_socket_bind_and_listen(TCP_SOCKET* sock, int queue, TCP_SOCK_ERROR* err
     return true;
 }
 
-bool tcp_socket_accept(TCP_SOCKET* server, TCP_SOCKET* client, TCP_SOCK_ERROR* err) {
+bool tcp_socket_accept(TCP_Socket* server, TCP_Socket* client, TCP_SOCK_ERROR* err) {
     // --> to do error checking
 
-    client->sock = accept(server->sock, NULL, NULL);
+    struct sockaddr_in desc;
+    int remote;
+    #if defined(WIN32)
+        int size;
+    #elif defined(__unix__)
+        socklen_t size;
+    #endif
+
+    client->sock           = accept(server->sock, (struct sockaddr*)&desc, &size);
+    client->is_initialized = false;
 
     if (client->sock == -1) {
+        client->last_error = ERR_INVALID_CONNECTION;
         SOCK_ERR(ERR_FAILED_TO_ACCEPT_CONNECTION);
     }
+
+    // fill client structure
+    client->is_connected = true;
+    client->is_listening = true;
+    client->type         = TP_CLIENT;
+    client->host.port    = htons(desc.sin_port);
+
+    char buff[16];
+    memset(buff, 0, 16);
+
+
+    if (inet_ntop(AF_INET, &desc.sin_addr, buff, 16) == NULL) {
+        SET_ERR(ERR_CANNOT_GET_CLIENT_IP_ADDR);
+    }
+
+    buff[15] = '\0';
+    memcpy(client->host.addr, buff, 16);
 
     return true;
 }
 
-
 // both
-int tcp_socket_recv(TCP_SOCKET* sock, char* buffer, size_t len, TCP_SOCK_ERROR* err) {
-    // --> to do error checking
+size_t tcp_socket_recv(TCP_Socket* sock, char* buffer, size_t len, TCP_SOCK_ERROR* err) {
+    if (!sock->is_connected) {
+        SET_ERR(ERR_SOCKET_IS_NOT_CONNECTED);
+        return 0;
+    }
+
+    if (buffer == NULL) {
+        SET_ERR(ERR_CANNOT_READ_TO_NULL_BUFFER);
+        return 0;
+    }
 
     memset(buffer, 0, len);
 
-    return recv(sock->sock, buffer, len, 0);
+    return (size_t)recv(sock->sock, buffer, len, 0);
+}
+
+size_t tcp_socket_send(TCP_Socket* sock, char* buffer, size_t len, TCP_SOCK_ERROR* err) {
+    if (!sock->is_connected) {
+        SET_ERR(ERR_SOCKET_IS_NOT_CONNECTED);
+        return 0;
+    }
+
+    if (buffer == NULL) {
+        SET_ERR(ERR_CANNOT_SEND_NULL_BUFFER);
+        return 0;
+    }
+
+    return (size_t)send(sock->sock, buffer, len, 0);
+}
+
+size_t tcp_socket_recv_until(TCP_Socket* sock, char* buffer, size_t len, char terminator, TCP_SOCK_ERROR* err) {
+    if (!sock->is_connected) {
+        SET_ERR(ERR_SOCKET_IS_NOT_CONNECTED);
+        return 0;
+    }
+
+    if (buffer == NULL) {
+        SET_ERR(ERR_CANNOT_SEND_NULL_BUFFER);
+        return 0;
+    }
+
+    memset(buffer, 0, len);
+    ssize_t received = 0;
+    ssize_t tmp_recv = 0;
+    char    tmp;
+
+    do {
+        tmp_recv = recv(sock->sock, &tmp, 1, 0);
+
+        if (tmp_recv == 0) {
+            *err = ERR_DIDNT_FOUND_TERMINATOR_IN_RECEIVED_STREAM;
+            break;
+        }
+
+        buffer[received] = tmp;
+        received += tmp_recv;
+    } while (tmp != terminator);
+
+    return (size_t)received;
 }

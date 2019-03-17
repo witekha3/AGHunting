@@ -70,9 +70,35 @@ CMakeFiles/Server.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/src/main.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/neko/projects/studia/AGHunting/Server/src/main.c -o CMakeFiles/Server.dir/src/main.c.s
 
+CMakeFiles/Server.dir/libs/log/src/log.c.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/libs/log/src/log.c.o: ../libs/log/src/log.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Server.dir/libs/log/src/log.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/libs/log/src/log.c.o   -c /home/neko/projects/studia/AGHunting/Server/libs/log/src/log.c
+
+CMakeFiles/Server.dir/libs/log/src/log.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/libs/log/src/log.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/neko/projects/studia/AGHunting/Server/libs/log/src/log.c > CMakeFiles/Server.dir/libs/log/src/log.c.i
+
+CMakeFiles/Server.dir/libs/log/src/log.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/libs/log/src/log.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/neko/projects/studia/AGHunting/Server/libs/log/src/log.c -o CMakeFiles/Server.dir/libs/log/src/log.c.s
+
+CMakeFiles/Server.dir/src/network/connection.c.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/src/network/connection.c.o: ../src/network/connection.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Server.dir/src/network/connection.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/src/network/connection.c.o   -c /home/neko/projects/studia/AGHunting/Server/src/network/connection.c
+
+CMakeFiles/Server.dir/src/network/connection.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/src/network/connection.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/neko/projects/studia/AGHunting/Server/src/network/connection.c > CMakeFiles/Server.dir/src/network/connection.c.i
+
+CMakeFiles/Server.dir/src/network/connection.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/src/network/connection.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/neko/projects/studia/AGHunting/Server/src/network/connection.c -o CMakeFiles/Server.dir/src/network/connection.c.s
+
 CMakeFiles/Server.dir/src/network/tcp_socket.c.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/src/network/tcp_socket.c.o: ../src/network/tcp_socket.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Server.dir/src/network/tcp_socket.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Server.dir/src/network/tcp_socket.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/src/network/tcp_socket.c.o   -c /home/neko/projects/studia/AGHunting/Server/src/network/tcp_socket.c
 
 CMakeFiles/Server.dir/src/network/tcp_socket.c.i: cmake_force
@@ -83,34 +109,53 @@ CMakeFiles/Server.dir/src/network/tcp_socket.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/src/network/tcp_socket.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/neko/projects/studia/AGHunting/Server/src/network/tcp_socket.c -o CMakeFiles/Server.dir/src/network/tcp_socket.c.s
 
-CMakeFiles/Server.dir/src/server.c.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/src/server.c.o: ../src/server.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Server.dir/src/server.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/src/server.c.o   -c /home/neko/projects/studia/AGHunting/Server/src/server.c
+CMakeFiles/Server.dir/src/server-api.c.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/src/server-api.c.o: ../src/server-api.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Server.dir/src/server-api.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/src/server-api.c.o   -c /home/neko/projects/studia/AGHunting/Server/src/server-api.c
 
-CMakeFiles/Server.dir/src/server.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/src/server.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/neko/projects/studia/AGHunting/Server/src/server.c > CMakeFiles/Server.dir/src/server.c.i
+CMakeFiles/Server.dir/src/server-api.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/src/server-api.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/neko/projects/studia/AGHunting/Server/src/server-api.c > CMakeFiles/Server.dir/src/server-api.c.i
 
-CMakeFiles/Server.dir/src/server.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/src/server.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/neko/projects/studia/AGHunting/Server/src/server.c -o CMakeFiles/Server.dir/src/server.c.s
+CMakeFiles/Server.dir/src/server-api.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/src/server-api.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/neko/projects/studia/AGHunting/Server/src/server-api.c -o CMakeFiles/Server.dir/src/server-api.c.s
+
+CMakeFiles/Server.dir/src/ui/web_interface.c.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/ui/web_interface.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Server.dir/src/ui/web_interface.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/src/ui/web_interface.c.o   -c /home/neko/projects/studia/AGHunting/Server/src/ui/web_interface.c
+
+CMakeFiles/Server.dir/src/ui/web_interface.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/src/ui/web_interface.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/neko/projects/studia/AGHunting/Server/src/ui/web_interface.c > CMakeFiles/Server.dir/src/ui/web_interface.c.i
+
+CMakeFiles/Server.dir/src/ui/web_interface.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/src/ui/web_interface.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/neko/projects/studia/AGHunting/Server/src/ui/web_interface.c -o CMakeFiles/Server.dir/src/ui/web_interface.c.s
 
 # Object files for target Server
 Server_OBJECTS = \
 "CMakeFiles/Server.dir/src/main.c.o" \
+"CMakeFiles/Server.dir/libs/log/src/log.c.o" \
+"CMakeFiles/Server.dir/src/network/connection.c.o" \
 "CMakeFiles/Server.dir/src/network/tcp_socket.c.o" \
-"CMakeFiles/Server.dir/src/server.c.o"
+"CMakeFiles/Server.dir/src/server-api.c.o" \
+"CMakeFiles/Server.dir/src/ui/web_interface.c.o"
 
 # External object files for target Server
 Server_EXTERNAL_OBJECTS =
 
 Server: CMakeFiles/Server.dir/src/main.c.o
+Server: CMakeFiles/Server.dir/libs/log/src/log.c.o
+Server: CMakeFiles/Server.dir/src/network/connection.c.o
 Server: CMakeFiles/Server.dir/src/network/tcp_socket.c.o
-Server: CMakeFiles/Server.dir/src/server.c.o
+Server: CMakeFiles/Server.dir/src/server-api.c.o
+Server: CMakeFiles/Server.dir/src/ui/web_interface.c.o
 Server: CMakeFiles/Server.dir/build.make
 Server: CMakeFiles/Server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable Server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable Server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
