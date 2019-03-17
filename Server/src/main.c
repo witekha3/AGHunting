@@ -4,7 +4,7 @@
 #include <server-api.h>
 
 #define DEFAULT_ADDR "127.0.0.1"
-#define DEFAULT_PORT 8080
+#define DEFAULT_PORT 35000
 
 int main(int argc, char** argv) {
 

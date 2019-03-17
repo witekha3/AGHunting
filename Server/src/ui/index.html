@@ -2,19 +2,291 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AGHUnting - server</title>
+    <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.1.0/markdown-it.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.18/autosize.min.js'></script>
+    <script src='http://unpkg.com/@wmhilton/cli-parser@1.1.0'></script>
+    <script src="https://cdn.jsdelivr.net/gh/novnc/websockify/include/websock.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/novnc/websockify/include/webutil.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/novnc/websockify/include/util.js"></script>
+
 </head>
-<body>
-    <h1>HALKO!</h1>
-    <script>
-
-
-    </script>
-    <style>
-        body {
-            background-color: black;
-        }
-    </style>
-
+<body id="particles-js">
+<div class='console'>
+    <div class='console-inner'>
+        <div id="outputs">
+        </div>
+        <div class='output-cmd'><textarea autofocus class='console-input' placeholder="Type command..."></textarea></div>
+    </div>
+</div>
 </body>
 </html>
+
+<style>
+    html,
+    body {
+        min-height: 100%;
+    }
+
+    body {
+        background-color: black;
+        /*padding: 0.5em 1em;*/
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .console {
+        position: fixed;
+        font-family: monospace,monospace;
+        color: #fff;
+        width: calc(100% - 3em);
+        max-width: 100%;
+        max-height: calc(100% - 3em);
+        overflow-y: auto;
+        margin: 1em 1em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        /*background: rgba(0, 0, 0, 0.5);
+        border-radius: 0.5em;*/
+        /*box-shadow: 0 0.75em 3em rgba(50, 50, 50, 0.5);*/
+        z-index: 100;
+        line-height: 1.5;
+    }
+
+    .console-input {
+        font-family: monospace,monospace;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        min-width: calc(100% - 2em);
+        resize: none;
+    }
+
+    .console-input:before {
+        content: '$> ';
+        color: #FC3565;
+        vertical-align: top;
+    }
+
+    .output-cmd:before {
+        content: '$> ';
+        color: #FC3565;
+        vertical-align: top;
+    }
+    .output-text:before {
+        content: '$> ';
+        color: #5F8787;
+        font-weight: 600 !important;
+        vertical-align: top;
+    }
+
+    .output-text,
+    .output-cmd {
+        width: 100%;
+        display: block;
+    }
+
+    .console-inner {
+        padding: 0.3em 1.1em;
+    }
+
+    .output-text,
+    .output-cmd {
+        display: block;
+        white-space: pre;
+    }
+
+    #outputs div {
+        opacity: 0.85;
+    }
+
+    #outputs div div {
+        color: #46f01d;
+        opacity: 0.8;
+        text-decoration: none;
+    }
+
+    #outputs a {
+        color: #46f01d;
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+
+    .console-inner .output-text#ready {
+        color: #3df5b8;
+        font-style: italic;
+        opacity: 0.75;
+    }
+
+    .particles-js-canvas-el {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+</style>
+
+<script>
+
+    const addr   = "ws://127.0.0.1:5000";
+
+    let ws = new WebSocket(addr, ['binary']);
+    //ws.binaryType = "blob";
+
+    let recvMsg = function(e) {
+        if (e.data instanceof Blob) {
+            let fr = new FileReader();
+            fr.onload = () => {
+                output(fr.result);
+            }
+
+            fr.readAsText(e.data);
+        } else output(e.data);
+
+    }
+
+    ws.onopen = () => {
+        output("Successfuly connected to websocket on " + addr);
+    };
+    ws.onmessage = recvMsg;
+
+    // aghunting commands
+    function stop() {
+
+    }
+
+    // User Commands
+    function echo (...a) {
+        return a.join(' ')
+    }
+    echo.usage = "echo arg [arg ...]"
+    echo.doc = "Echos to output whatever arguments are input"
+
+    var cmds = {
+        echo,
+        clear,
+        help,
+        stop
+    }
+
+    /*
+     * * * * * * * * USER INTERFACE * * * * * * *
+     */
+
+    function clear () {
+        $("#outputs").html("")
+    }
+    clear.usage = "clear"
+    clear.doc = "Clears the terminal screen"
+
+    function help (cmd) {
+        if (cmd) {
+            let result = ""
+            let usage = cmds[cmd].usage
+            let doc = cmds[cmd].doc
+            result += (typeof usage === 'function') ? usage() : usage
+            result += "\n"
+            result += (typeof doc === 'function') ? doc() : doc
+            return result
+        } else {
+            let result = "**Commands:**\n\n"
+            print = Object.keys(cmds)
+            for (let p of print) {
+                result += "- " + p + "\n"
+            }
+            return result
+        }
+    }
+    help.usage = () => "help [command]"
+    help.doc = () => "Without an argument, lists available commands. If used with an argument displays the usage & docs for the command."
+
+    // Set Focus to Input
+    $('.console').click(function() {
+        $('.console-input').focus()
+    })
+
+    // Display input to Console
+    function input() {
+        var cmd = $('.console-input').val()
+        $("#outputs").append("<div class='output-cmd'>" + cmd + "</div>")
+        $('.console-input').val("")
+        autosize.update($('textarea'))
+        $("html, body").animate({
+            scrollTop: $(document).height()
+        }, 300);
+        return cmd
+    }
+
+    // Output to Console
+    function output(print) {
+        if (!window.md) {
+            window.md = window.markdownit({
+                linkify: true,
+                breaks: true
+            })
+        }
+        $("#outputs").append(window.md.render(print))
+        $(".console").scrollTop($('.console-inner').height());
+    }
+
+    // Break Value
+    var newLine = "<br/> &nbsp;";
+
+    autosize($('textarea'))
+
+    var cmdHistory = []
+    var cursor = -1
+
+    // Get User Command
+    $('.console-input').on('keydown', function(event) {
+        if (event.which === 38) {
+            // Up Arrow
+            cursor = Math.min(++cursor, cmdHistory.length - 1)
+            $('.console-input').val(cmdHistory[cursor])
+        } else if (event.which === 40) {
+            // Down Arrow
+            cursor = Math.max(--cursor, -1)
+            if (cursor === -1) {
+                $('.console-input').val('')
+            } else {
+                $('.console-input').val(cmdHistory[cursor])
+            }
+        } else if (event.which === 13) {
+            event.preventDefault();
+            cursor = -1
+            let text = input()
+            let args = getTokens(text)[0]
+            let cmd = args.shift().value
+            args = args.filter(x => x.type !== 'whitespace').map(x => x.value)
+            cmdHistory.unshift(text)
+            if (typeof cmds[cmd] === 'function') {
+                let result = cmds[cmd](...args)
+                if (result === void(0)) {
+                    // output nothing
+                } else if (result instanceof Promise) {
+                    result.then(output)
+                } else {
+                    console.log(result)
+                    output(result)
+                }
+            } else if (cmd.trim() === '') {
+                output('')
+            } else {
+                output("Command not found: `" + cmd + "`")
+                output("Use 'help' for list of commands.")
+            }
+        }
+    });
+
+</script>
