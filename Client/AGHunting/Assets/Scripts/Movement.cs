@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     public float speed = 10f;
     public float jumpForce = 8f;
     CapsuleCollider col;
+    public Vector3 Velocity;
 
     public LayerMask groundLayers;
     // Start is called before the first frame update
@@ -31,14 +32,14 @@ public class Movement : MonoBehaviour
         Vector3 MoveVertical = transform.forward * MoveZ;
 
         //Create velocity
-        Vector3 Velocity = (MoveHorizontal + MoveVertical).normalized * speed;
+        Velocity = (MoveHorizontal + MoveVertical).normalized * speed;
 
         //Movement
         if (Velocity != Vector3.zero)
         {
             rb.MovePosition(rb.position + Velocity * Time.deltaTime);
-        }
 
+        }
         // jumping
 
 

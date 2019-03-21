@@ -4,30 +4,38 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public Rigidbody player;
-    public Rigidbody Enemy;
-    public LayerMask layer;
-    
-    
-    // Start is called before the first frame update
+    GameObject player;
+    GameObject Enemy;
+    public bool itIs = false ;
+    MonsterStats monster;
+    int HP;
     void Start()
     {
-        player = GetComponent<Rigidbody>();
-      //  Enemy = GetComponent<Rigidbody>();
 
+        player = this.gameObject;
+        Enemy = GameObject.FindGameObjectWithTag("Player");
+        monster = monster.GetComponent<MonsterStats>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        float distance = Vector3.Distance(player.position, Enemy.position);
-        if (distance < 4f){
+        IsAttacking();
+    }
+
+    bool IsAttacking()
+    {
+        float distance = Vector3.Distance(player.transform.position, Enemy.transform.position);
+        // Debug.Log(Enemy.position);
+        if (distance < 4f)
+        {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("Atacked");
+                itIs = true;
+                HP = monster.monsterHP;
+                HP -= 10;
+                Debug.Log("Atacked : " + HP);
             }
         }
-        
-        
+        return itIs;
     }
 }
