@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerInstantiate : MonoBehaviour
 {
-    public GameObject player;
-
+    public GameObject myPlayer;
+    public string playerNick;
+    public int playerHP;
     // Start is called before the first frame update
     void Start()
     {
-        player = Instantiate(player, new Vector3(0, 15, -13), Quaternion.identity);
+        playerHP = 100;
+        playerNick = myPlayer.name;
+        myPlayer.tag = "Player";
+        myPlayer=Instantiate(myPlayer, new Vector3(0, 18, -13), Quaternion.identity) as GameObject;
     }
 
     // Update is called once per frame

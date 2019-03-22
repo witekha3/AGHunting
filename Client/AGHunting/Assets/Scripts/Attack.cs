@@ -4,38 +4,44 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    GameObject player;
-    GameObject Enemy;
-    public bool itIs = false ;
-    MonsterStats monster;
-    int HP;
+    public GameObject player;
+    GameObject[] Enemy;
+    GameObject enemy;
+    Rotation cam;
+    MonsterInstantiate monsterInstantiate;
+    int monsterHP;
+
     void Start()
     {
-
         player = this.gameObject;
-        Enemy = GameObject.FindGameObjectWithTag("Player");
-        monster = monster.GetComponent<MonsterStats>();
+        Enemy = GameObject.FindGameObjectsWithTag("Monster");
+        enemy = GameObject.FindGameObjectWithTag("Monster");
+        enemy = Enemy[0].GetComponent<MonsterInstantiate>().monster;
+        monsterHP = Enemy[0].GetComponent<MonsterInstantiate>().monsterHP;
+        //foreach (GameObject enem in Enemy) { enemy = GetComponent<MonsterInstantiate>().monster as GameObject; Debug.Log(enemy.transform.position.ToString()); }
+
+        //monsterHP = GetComponent<MonsterInstantiate>().monsterHP;
+
     }
 
     private void Update()
     {
-        IsAttacking();
+       IsAttacking();
     }
 
-    bool IsAttacking()
+    void IsAttacking()
     {
-        float distance = Vector3.Distance(player.transform.position, Enemy.transform.position);
-        // Debug.Log(Enemy.position);
+
+        float distance = Vector3.Distance(player.transform.position, enemy.transform.position);
+
         if (distance < 4f)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                itIs = true;
-                HP = monster.monsterHP;
-                HP -= 10;
-                Debug.Log("Atacked : " + HP);
+                monsterHP -= 10;
+                Enemy[0].GetComponent<MonsterInstantiate>().monsterHP = monsterHP;
+              //  Debug.Log("Atacked : " + monsterHP);
             }
         }
-        return itIs;
     }
 }

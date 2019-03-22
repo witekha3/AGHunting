@@ -11,12 +11,16 @@ public class MonsterInstantiate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monster = Instantiate(monster, new Vector3(0, 15, -13), Quaternion.identity);
+        monsterHP = 100;
+        monsterName = monster.name;
+        monster = Instantiate(monster, new Vector3(0, 15, -13), Quaternion.identity) as GameObject;
+        monster.tag = "Monster";
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(monsterHP);
+        Debug.Log(monsterHP);
     }
 }

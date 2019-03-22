@@ -53,7 +53,7 @@ public class OwnTCPClient : MonoBehaviour
     {
         try
         {
-            socketConnection = new TcpClient("localhost", 8080);
+            socketConnection = new TcpClient("0.tcp.ngrok.io", 16520);
             Byte[] bytes = new Byte[64];
             while (true)
             {
@@ -110,16 +110,17 @@ public class OwnTCPClient : MonoBehaviour
     //  string clientChecksum = "?";
     //  string clientId = "";
     //  string clientMethod = "";
+    int clientLenght = 1000;
     int clientChecksum = 2;
-    int clientId = 1;
-    int clientMethod = 1;
-    int clientMethodData = 4;
+    int clientId = 3;
+    int clientMethod = 4;
+    int clientMethodData = 0;
     public void PlayerPosition()
     {
         Vector3 isMoving = playerCopy.GetComponent<Movement>().Velocity;
         if (isMoving != Vector3.zero)
         {
-            clientMethod = 1;
+            clientMethod = 4;
             clientMethodData = (int)playerCopy.transform.position.x;
         }
         
@@ -141,7 +142,7 @@ public class OwnTCPClient : MonoBehaviour
             if (stream.CanWrite)
             {
                 PlayerPosition();
-                byte[] message = { (byte)clientChecksum ,(byte)clientId, (byte)clientMethod, (byte)clientMethodData };
+                byte[] message = { (byte)clientLenght, (byte)clientChecksum ,(byte)clientId, (byte)clientMethod, (byte)clientMethodData };
                 // Write byte array to socketConnection stream.                 
                 stream.Write(message, 0, message.Length);
                 Debug.Log("sended"+ message);
@@ -149,7 +150,7 @@ public class OwnTCPClient : MonoBehaviour
         }
         catch (SocketException socketException)
         {
-            Debug.Log("Socket exception: ");
+            Debug.Log("Socket exception: "+socketException);
         }
        
     }

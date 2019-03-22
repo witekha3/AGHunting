@@ -7539,10 +7539,9 @@ GameObject:
   m_Component:
   - component: {fileID: 969653037}
   - component: {fileID: 969653036}
-  - component: {fileID: 969653038}
   m_Layer: 0
   m_Name: EmptyMonster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7576,20 +7575,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &969653038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969653035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1deaedfd663692479ea381f235312ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterName: 
-  monsterHP: 0
 --- !u!1001 &974888786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11906,10 +11891,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1570637177}
   - component: {fileID: 1570637176}
-  - component: {fileID: 1570637178}
   m_Layer: 0
   m_Name: EmtyPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11926,7 +11910,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91cdde63d0489d4793d051d1359edbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7477489651469609499, guid: 326026381f380284fb625136817dcdb9, type: 3}
+  myPlayer: {fileID: 7477489651469609499, guid: 326026381f380284fb625136817dcdb9,
+    type: 3}
+  playerNick: 
+  playerHP: 0
 --- !u!4 &1570637177
 Transform:
   m_ObjectHideFlags: 0
@@ -11941,21 +11928,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1570637178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570637175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 951de97eacce40f45a4d9e82cea8dfff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 0
-  playerNick: 
-  playerHP: 0
 --- !u!4 &1577800227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e7b82ecb0d13af242bca2e19d7f8d4cc,
