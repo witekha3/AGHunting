@@ -1,28 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Attack : MonoBehaviour
 {
     public GameObject player;
-    GameObject[] Enemy;
-    GameObject enemy;
-    Rotation cam;
-    MonsterInstantiate monsterInstantiate;
-    int monsterHP;
-
-    void Start()
+    MonsterInstantiate enemy;
+    MonsterHealth monsterHP;
+    public Image healthBar;
+    float HP;
+    void Awake()
     {
         player = this.gameObject;
-        Enemy = GameObject.FindGameObjectsWithTag("Monster");
-        enemy = GameObject.FindGameObjectWithTag("Monster");
-        enemy = Enemy[0].GetComponent<MonsterInstantiate>().monster;
-        monsterHP = Enemy[0].GetComponent<MonsterInstantiate>().monsterHP;
-        //foreach (GameObject enem in Enemy) { enemy = GetComponent<MonsterInstantiate>().monster as GameObject; Debug.Log(enemy.transform.position.ToString()); }
 
-        //monsterHP = GetComponent<MonsterInstantiate>().monsterHP;
+        enemy = FindObjectOfType<MonsterInstantiate>();
+        monsterHP = FindObjectOfType<MonsterHealth>();
+        if (!enemy)
+        {
+            Debug.Log("No Enemy");
+        }
+        else {
+            healthBar = monsterHP.healthBar;
+            HP = monsterHP.monsterHP;
+            healthBar.fillAmount = HP;
 
+            //foreach (GameObject enem in Enemy) { enemy = GetComponent<MonsterInstantiate>().monster as GameObject; Debug.Log(enemy.transform.position.ToString()); }
+            // 
+        }
     }
+
 
     private void Update()
     {
@@ -32,16 +40,22 @@ public class Attack : MonoBehaviour
     void IsAttacking()
     {
 
-        float distance = Vector3.Distance(player.transform.position, enemy.transform.position);
+        float distance = Vector3.Distance(player.transform.position, enemy.monster.transform.position);
 
         if (distance < 4f)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                monsterHP -= 10;
-                Enemy[0].GetComponent<MonsterInstantiate>().monsterHP = monsterHP;
-              //  Debug.Log("Atacked : " + monsterHP);
+                HP -= 10;
+                healthBar.fillAmount = HP / 100;
+                monsterHP.monsterHP = HP;
+                Debug.Log((HP / 100));
+
+                //Debug.Log("Atacked : " + monsterHP);
             }
         }
     }
+
+
+
 }

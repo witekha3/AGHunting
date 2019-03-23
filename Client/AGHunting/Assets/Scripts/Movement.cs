@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField]
-    private Rigidbody rb;
+    public Rigidbody rb;
     public float speed = 10f;
     public float jumpForce = 8f;
     CapsuleCollider col;

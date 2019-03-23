@@ -67,6 +67,7 @@
     <Compile Include="Assets\Models\Monsters\BattleDragon\Dragons\Scripts\player_movement.cs" />
     <Compile Include="Assets\Scripts\Animat.cs" />
     <Compile Include="Assets\Scripts\Attack.cs" />
+    <Compile Include="Assets\Scripts\MonsterHealth.cs" />
     <Compile Include="Assets\Scripts\MonsterInstantiate.cs" />
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
