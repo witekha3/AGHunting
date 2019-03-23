@@ -22,6 +22,8 @@ typedef struct {
     bool is_running;
 
     short active_connections;
+    short free_slots;
+    short last_free_connection;
 
     VECTOR(Connection) connections;
     VECTOR(pthread_t)  threads;

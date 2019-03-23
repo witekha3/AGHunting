@@ -29,23 +29,38 @@ static void update() {
 
     log_info("received connection request from %s:%d", client.host.addr, client.host.port);
 
-    /*
-    Connection c = { client };
-    vector_push_back(SERVER.connections, c);
-
+    Connection c = { client, true, false };
     pthread_t tmp;
-    vector_push_back(SERVER.threads, tmp);
-    pthread_create(&SERVER.threads[SERVER.active_connections], NULL, connection_handler,
-                   (void*)&SERVER.connections[SERVER.active_connections]);
 
-    ++SERVER.active_connections;*/
+    if (SERVER.free_slots > 0) {
+        // find first free connection
+        for (int i = 0; i < vector_size(SERVER.connections); ++i) {
+            if (SERVER.connections[i].is_free) {
+                SERVER.connections[i] = c;
+                pthread_create(&SERVER.threads[i], NULL, connection_handler,
+                               (void*)&SERVER.connections[i]);
+                break;
+            }
+        }
+    } else {
+        vector_push_back(SERVER.connections, c);
+        vector_push_back(SERVER.threads, tmp);
+
+        pthread_create(&SERVER.threads[SERVER.last_free_connection], NULL, connection_handler,
+                       (void*)&SERVER.connections[SERVER.last_free_connection]);
+        ++SERVER.last_free_connection;
+    }
+
+    ++SERVER.active_connections;
 }
 
 // external methods
 // server loop
 void start_server() {
     start_web_interface(&SERVER);
-    // create controller thread
+
+    log_info("Server is running on %s:%d", SERVER.host.addr, SERVER.host.port);
+
     while (SERVER.is_running) {
         update();
     }
@@ -66,7 +81,9 @@ bool init_server(Host host) {
 
     log_info("Successfully initialized web interface on 127.0.0.1:1337");
 
-    SERVER.active_connections = 0;
+    SERVER.active_connections   = 0;
+    SERVER.free_slots           = 0;
+    SERVER.last_free_connection = 0;
 
     log_info("Server initialized successfully");
     SERVER.is_running = true;

@@ -7,12 +7,33 @@
 void* connection_handler(void* data) {
     Connection* c = (Connection*)data;
 
-    log_info("Received connection from: %s:%d", c->socket.host.addr, c->socket.host.port);
+    // auth to do
 
-    // echo
-    char buff[128];
-    tcp_socket_recv(&c->socket, buff, 128, NULL);
-    tcp_socket_send(&c->socket, buff ,128, NULL);
+    while (c->is_active) {
+        char buff[RAW_PACKET_LEN];
+        memset(buff, 0, RAW_PACKET_LEN);
 
-    tcp_socket_close(&c->socket);
+        Packet p;
+
+        size_t len = tcp_socket_recv(&c->socket, buff, RAW_PACKET_LEN, NULL);
+
+        if (len == 0) {
+            c->is_active = false;
+
+            log_error("Connection lost.");
+            // --active_connections
+            break;
+        }
+
+        if (!parse_packet_header(&p, buff, len)) {
+            log_error("Received invalid packet");
+            continue;
+        }
+
+        print_packet(&p);
+        // handle packet
+    }
+
+    c->is_active = false;
+    return (void*)0;
 }

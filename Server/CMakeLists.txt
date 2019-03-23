@@ -4,9 +4,11 @@ project(Server C)
 set(CMAKE_C_STANDARD 11)
 
 file(GLOB SRC "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c"
+              "${CMAKE_CURRENT_SOURCE_DIR}/src/network/*/*.c"
               "${CMAKE_CURRENT_SOURCE_DIR}/src/*/*.c"
               "${CMAKE_CURRENT_SOURCE_DIR}/src/game/*/*.c"
               "${CMAKE_CURRENT_SOURCE_DIR}/libs/log/src/*.c")
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src
                     ${CMAKE_CURRENT_SOURCE_DIR}/libs/includes)
 

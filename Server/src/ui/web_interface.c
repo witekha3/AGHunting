@@ -26,6 +26,7 @@ static void* web_thread_worker(void*);
 static WebInterface interface;
 
 static char static_http_response[HTTP_BUFF_SIZE];
+static WebMethod ascii_to_method(char*, size_t);
 
 bool init_web_interface() {
     Host http_h = { "127.0.0.1", 1337 };
@@ -65,17 +66,24 @@ static void* http_thread_worker(void* data) {
     tcp_socket_close(&interface.http_socket);
 }
 
+// ----
+// web method handlers
+
+static void wm_list_connection(AH_Server*, TCP_Socket*);
+static void wm_cleanup_dead(AH_Server*, TCP_Socket*);
+
 static void* web_thread_worker(void* data) {
     AH_Server* server = (AH_Server*)data;
     char buff[512];
+    char response_buff[512];
 
     while (server->is_running) {
-        TCP_Socket client;
-        tcp_socket_accept(&interface.web_socket, &client, NULL);
+        TCP_Socket web_sock;
+        tcp_socket_accept(&interface.web_socket, &web_sock, NULL);
 
         while (true) {
             memset(buff, 0, 512);
-            size_t recv = tcp_socket_recv(&client, buff, 128, NULL);
+            size_t recv = tcp_socket_recv(&web_sock, buff, 128, NULL);
 
             // websockify src dest must be on
             // user probably refreshed page, websocket need to be reconnected
@@ -83,11 +91,85 @@ static void* web_thread_worker(void* data) {
                 break;
             }
 
+            memset(response_buff, 0, 512);
+
+            WebMethod w = ascii_to_method(buff, recv);
+
             // do something with received information
+            switch (w) {
+                case WEB_CLEANUP_DEAD:
+                    wm_cleanup_dead(server, &web_sock);
+                    break;
+
+                case WEB_LIST_CONNECTIONS:
+                    wm_list_connection(server, &web_sock);
+                    break;
+
+                case WEB_UNKNOWN:
+                    log_error("Received unknown method form web interface.");
+                    break;
+
+                case WEB_STOP:
+                    server->is_running = false;
+                    tcp_socket_close(&server->server_socket);
+                    sprintf(response_buff, "Server is shutting down.");
+                    tcp_socket_send(&web_sock, response_buff, strlen(response_buff), NULL);
+                    break;
+
+                default:
+                    break;
+            };
 
         }
     }
+    return (void*)0;
 }
+
+// definitions of web method handlers
+
+static void wm_cleanup_dead(AH_Server* server, TCP_Socket* web_sock) {
+    int removed = 0;
+
+    for (Connection* c = vector_begin(server->connections); c != vector_end(server->connections); ++c) {
+        if (!c->is_active) {
+            c->is_free = true;
+            ++(server->free_slots);
+            ++removed;
+        }
+    }
+    char msg[64];
+    memset(msg, 0, 64);
+
+    if (removed == 0) {
+        sprintf(msg, "No dead connection found.");
+    } else {
+        sprintf(msg, "Successfully removed %d dead connections.", removed);
+    }
+
+    tcp_socket_send(web_sock, msg, strlen(msg), NULL);
+}
+
+static void wm_list_connection(AH_Server* server, TCP_Socket* web_sock) {
+    char response[512];
+    memset(response, 0, 512);
+
+    int count = 0;
+
+    for (Connection* c = vector_begin(server->connections); c != vector_end(server->connections); ++c) {
+        sprintf(&response[strlen(response)], "%d. %s:%d, status: %s\n", count, c->socket.host.addr, c->socket.host.port,
+                                             c->is_active ? "active" : "dead");
+
+        ++count;
+    }
+
+    if (count == 0) {
+        sprintf(response, "No active connections.\n");
+    }
+
+    tcp_socket_send(web_sock, response, strlen(response), NULL);
+}
+
+// ----
 
 static bool load_http_response(const char* p) {
     char buff[HTTP_BUFF_SIZE];
@@ -135,4 +217,20 @@ static bool init_tcp(WebInterface* interface, Host http_h, Host web_h) {
     }
 
     return true;
+}
+
+static WebMethod ascii_to_method(char* buff, size_t len) {
+    if (strncmp(buff, "stop", 5) == 0) {
+        return WEB_STOP;
+    }
+
+    if (strncmp(buff, "list-connections", strlen("list-connections")) == 0) {
+        return WEB_LIST_CONNECTIONS;
+    }
+
+    if (strncmp(buff, "cleanup-dead", strlen("cleanup-dead")) == 0) {
+        return WEB_CLEANUP_DEAD;
+    }
+
+    return WEB_UNKNOWN;
 }

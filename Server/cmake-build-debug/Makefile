@@ -204,6 +204,60 @@ src/network/connection.c.s:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/connection.c.s
 .PHONY : src/network/connection.c.s
 
+src/network/protocol/auth.o: src/network/protocol/auth.c.o
+
+.PHONY : src/network/protocol/auth.o
+
+# target to build an object file
+src/network/protocol/auth.c.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/protocol/auth.c.o
+.PHONY : src/network/protocol/auth.c.o
+
+src/network/protocol/auth.i: src/network/protocol/auth.c.i
+
+.PHONY : src/network/protocol/auth.i
+
+# target to preprocess a source file
+src/network/protocol/auth.c.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/protocol/auth.c.i
+.PHONY : src/network/protocol/auth.c.i
+
+src/network/protocol/auth.s: src/network/protocol/auth.c.s
+
+.PHONY : src/network/protocol/auth.s
+
+# target to generate assembly for a file
+src/network/protocol/auth.c.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/protocol/auth.c.s
+.PHONY : src/network/protocol/auth.c.s
+
+src/network/protocol/packet_parser.o: src/network/protocol/packet_parser.c.o
+
+.PHONY : src/network/protocol/packet_parser.o
+
+# target to build an object file
+src/network/protocol/packet_parser.c.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/protocol/packet_parser.c.o
+.PHONY : src/network/protocol/packet_parser.c.o
+
+src/network/protocol/packet_parser.i: src/network/protocol/packet_parser.c.i
+
+.PHONY : src/network/protocol/packet_parser.i
+
+# target to preprocess a source file
+src/network/protocol/packet_parser.c.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/protocol/packet_parser.c.i
+.PHONY : src/network/protocol/packet_parser.c.i
+
+src/network/protocol/packet_parser.s: src/network/protocol/packet_parser.c.s
+
+.PHONY : src/network/protocol/packet_parser.s
+
+# target to generate assembly for a file
+src/network/protocol/packet_parser.c.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/network/protocol/packet_parser.c.s
+.PHONY : src/network/protocol/packet_parser.c.s
+
 src/network/tcp_socket.o: src/network/tcp_socket.c.o
 
 .PHONY : src/network/tcp_socket.o
@@ -303,6 +357,12 @@ help:
 	@echo "... src/network/connection.o"
 	@echo "... src/network/connection.i"
 	@echo "... src/network/connection.s"
+	@echo "... src/network/protocol/auth.o"
+	@echo "... src/network/protocol/auth.i"
+	@echo "... src/network/protocol/auth.s"
+	@echo "... src/network/protocol/packet_parser.o"
+	@echo "... src/network/protocol/packet_parser.i"
+	@echo "... src/network/protocol/packet_parser.s"
 	@echo "... src/network/tcp_socket.o"
 	@echo "... src/network/tcp_socket.i"
 	@echo "... src/network/tcp_socket.s"
