@@ -99,6 +99,18 @@
 		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/connection.h">
 			<Option target="Server"/>
 		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/protocol/auth.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/protocol/auth.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/protocol/packet_parser.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/protocol/packet_parser.h">
+			<Option target="Server"/>
+		</Unit>
 		<Unit filename="/home/neko/projects/studia/AGHunting/Server/src/network/tcp_socket.c">
 			<Option target="Server"/>
 		</Unit>

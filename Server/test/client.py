@@ -1,8 +1,22 @@
 import socket
 
-host = ('127.0.0.1', 8080)
+host = ('127.0.0.1', 35000)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(host)
-s.send('fdsagsh\ngdfhfdhfffffffffffffffffffffff'.encode('utf-8'))
+
+msg = bytearray()
+
+msg.append(125)
+msg.append(255)
+msg.append(255)
+msg.append(255)
+msg.append(255)
+msg.append(255)
+msg.append(255)
+
+s.send(msg, len(msg))
+
+
+
 

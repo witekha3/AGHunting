@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Server.dir/src/main.c.o"
   "CMakeFiles/Server.dir/libs/log/src/log.c.o"
   "CMakeFiles/Server.dir/src/network/connection.c.o"
+  "CMakeFiles/Server.dir/src/network/protocol/auth.c.o"
+  "CMakeFiles/Server.dir/src/network/protocol/packet_parser.c.o"
   "CMakeFiles/Server.dir/src/network/tcp_socket.c.o"
   "CMakeFiles/Server.dir/src/server-api.c.o"
   "CMakeFiles/Server.dir/src/ui/web_interface.c.o"

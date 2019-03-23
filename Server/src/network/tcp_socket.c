@@ -11,20 +11,18 @@
 #define SET_INTERNAL_ERR(err_code) sock->is_initialized=false; \
                                    sock->last_error = err_code;
 
-
 bool tcp_socket_create(TCP_Socket* sock, Host host, TCP_SOCK_ERROR* err) {
     #ifdef OS_NOT_SUPPORTED
         SET_INTERNAL_ERR(ERR_OS_NOT_SUPPORTED);
         SOCK_ERR(ERR_OS_NOT_SUPPORTED);
     #endif
 
+    // windows requires call of WSAInit
     #ifdef WIN32
         WSAData wsa;
         WSAInit(MAKEWORD(2, 2), &wsa);
     #endif
 
-
-    // windows requires call of WSAInit
     // tcp
     sock->type           = TP_NOT_CHOSEN;
     sock->sock           = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -104,7 +102,7 @@ bool tcp_socket_accept(TCP_Socket* server, TCP_Socket* client, TCP_SOCK_ERROR* e
     #endif
 
     client->sock           = accept(server->sock, (struct sockaddr*)&desc, &size);
-    client->is_initialized = false;
+    client->is_initialized = true;
 
     if (client->sock == -1) {
         client->last_error = ERR_INVALID_CONNECTION;
@@ -113,19 +111,19 @@ bool tcp_socket_accept(TCP_Socket* server, TCP_Socket* client, TCP_SOCK_ERROR* e
 
     // fill client structure
     client->is_connected = true;
-    client->is_listening = true;
+    client->is_listening = false;
     client->type         = TP_CLIENT;
     client->host.port    = htons(desc.sin_port);
 
     char buff[16];
     memset(buff, 0, 16);
 
-
     if (inet_ntop(AF_INET, &desc.sin_addr, buff, 16) == NULL) {
         SET_ERR(ERR_CANNOT_GET_CLIENT_IP_ADDR);
     }
 
-    buff[15] = '\0';
+
+    buff[strlen(buff)] = '\0';
     memcpy(client->host.addr, buff, 16);
 
     return true;

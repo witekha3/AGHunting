@@ -8,17 +8,30 @@ CMakeFiles/Server.dir/src/main.c.o: ../libs/includes/log/log.h
 CMakeFiles/Server.dir/src/main.c.o: ../libs/includes/vector/vector.h
 CMakeFiles/Server.dir/src/main.c.o: ../src/network/connection.h
 CMakeFiles/Server.dir/src/main.c.o: ../src/network/host.h
+CMakeFiles/Server.dir/src/main.c.o: ../src/network/protocol/packet.h
+CMakeFiles/Server.dir/src/main.c.o: ../src/network/protocol/packet_parser.h
 CMakeFiles/Server.dir/src/main.c.o: ../src/network/tcp_socket.h
 CMakeFiles/Server.dir/src/main.c.o: ../src/server-api.h
 CMakeFiles/Server.dir/src/main.c.o: ../src/server.h
 CMakeFiles/Server.dir/src/main.c.o: ../src/ui/web_interface.h
+CMakeFiles/Server.dir/src/main.c.o: ../src/ui/web_methods.h
 CMakeFiles/Server.dir/src/main.c.o: ../src/main.c
 
 CMakeFiles/Server.dir/src/network/connection.c.o: ../libs/includes/log/log.h
 CMakeFiles/Server.dir/src/network/connection.c.o: ../src/network/host.h
+CMakeFiles/Server.dir/src/network/connection.c.o: ../src/network/protocol/packet.h
+CMakeFiles/Server.dir/src/network/connection.c.o: ../src/network/protocol/packet_parser.h
 CMakeFiles/Server.dir/src/network/connection.c.o: ../src/network/tcp_socket.h
 CMakeFiles/Server.dir/src/network/connection.c.o: ../src/network/connection.c
 CMakeFiles/Server.dir/src/network/connection.c.o: ../src/network/connection.h
+
+CMakeFiles/Server.dir/src/network/protocol/auth.c.o: ../src/network/protocol/auth.c
+CMakeFiles/Server.dir/src/network/protocol/auth.c.o: ../src/network/protocol/auth.h
+
+CMakeFiles/Server.dir/src/network/protocol/packet_parser.c.o: ../libs/includes/log/log.h
+CMakeFiles/Server.dir/src/network/protocol/packet_parser.c.o: ../src/network/protocol/packet.h
+CMakeFiles/Server.dir/src/network/protocol/packet_parser.c.o: ../src/network/protocol/packet_parser.c
+CMakeFiles/Server.dir/src/network/protocol/packet_parser.c.o: ../src/network/protocol/packet_parser.h
 
 CMakeFiles/Server.dir/src/network/tcp_socket.c.o: ../libs/includes/log/log.h
 CMakeFiles/Server.dir/src/network/tcp_socket.c.o: ../src/network/host.h
@@ -29,19 +42,25 @@ CMakeFiles/Server.dir/src/server-api.c.o: ../libs/includes/log/log.h
 CMakeFiles/Server.dir/src/server-api.c.o: ../libs/includes/vector/vector.h
 CMakeFiles/Server.dir/src/server-api.c.o: ../src/network/connection.h
 CMakeFiles/Server.dir/src/server-api.c.o: ../src/network/host.h
+CMakeFiles/Server.dir/src/server-api.c.o: ../src/network/protocol/packet.h
+CMakeFiles/Server.dir/src/server-api.c.o: ../src/network/protocol/packet_parser.h
 CMakeFiles/Server.dir/src/server-api.c.o: ../src/network/tcp_socket.h
 CMakeFiles/Server.dir/src/server-api.c.o: ../src/server-api.h
 CMakeFiles/Server.dir/src/server-api.c.o: ../src/server.h
 CMakeFiles/Server.dir/src/server-api.c.o: ../src/ui/web_interface.h
+CMakeFiles/Server.dir/src/server-api.c.o: ../src/ui/web_methods.h
 CMakeFiles/Server.dir/src/server-api.c.o: ../src/server-api.c
 
 CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../libs/includes/log/log.h
 CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../libs/includes/vector/vector.h
 CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/network/connection.h
 CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/network/host.h
+CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/network/protocol/packet.h
+CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/network/protocol/packet_parser.h
 CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/network/tcp_socket.h
 CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/server.h
 CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/ui/web_interface.h
+CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/ui/web_methods.h
 CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/ui/web_interface.c
 CMakeFiles/Server.dir/src/ui/web_interface.c.o: ../src/ui/web_interface.h
 

@@ -13,9 +13,9 @@
 
 #include <network/tcp_socket.h>
 #include <network/host.h>
+#include <ui/web_methods.h>
 
 #include <server.h>
-
 
 extern bool init_web_interface();
 extern void start_web_interface(AH_Server*);

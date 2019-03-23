@@ -7,6 +7,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/neko/projects/studia/AGHunting/Server/libs/log/src/log.c" "/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/Server.dir/libs/log/src/log.c.o"
   "/home/neko/projects/studia/AGHunting/Server/src/main.c" "/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/Server.dir/src/main.c.o"
   "/home/neko/projects/studia/AGHunting/Server/src/network/connection.c" "/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/Server.dir/src/network/connection.c.o"
+  "/home/neko/projects/studia/AGHunting/Server/src/network/protocol/auth.c" "/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/Server.dir/src/network/protocol/auth.c.o"
+  "/home/neko/projects/studia/AGHunting/Server/src/network/protocol/packet_parser.c" "/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/Server.dir/src/network/protocol/packet_parser.c.o"
   "/home/neko/projects/studia/AGHunting/Server/src/network/tcp_socket.c" "/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/Server.dir/src/network/tcp_socket.c.o"
   "/home/neko/projects/studia/AGHunting/Server/src/server-api.c" "/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/Server.dir/src/server-api.c.o"
   "/home/neko/projects/studia/AGHunting/Server/src/ui/web_interface.c" "/home/neko/projects/studia/AGHunting/Server/cmake-build-debug/CMakeFiles/Server.dir/src/ui/web_interface.c.o"

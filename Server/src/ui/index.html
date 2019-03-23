@@ -149,12 +149,12 @@
             let fr = new FileReader();
             fr.onload = () => {
                 output(fr.result);
-            }
+            };
 
             fr.readAsText(e.data);
         } else output(e.data);
 
-    }
+    };
 
     ws.onopen = () => {
         output("Successfuly connected to websocket on " + addr);
@@ -163,7 +163,15 @@
 
     // aghunting commands
     function stop() {
+        ws.send("stop");
+    }
 
+    function cleanup_dead() {
+        ws.send("cleanup-dead");
+    }
+
+    function list_connections() {
+        ws.send("list-connections");
     }
 
     // User Commands
@@ -177,7 +185,9 @@
         echo,
         clear,
         help,
-        stop
+        stop,
+        list_connections,
+        cleanup_dead
     }
 
     /*
