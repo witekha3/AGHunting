@@ -20,14 +20,21 @@ public class Attack : MonoBehaviour
         if (!enemy)
         {
             Debug.Log("No Enemy");
+            return;
         }
         else {
-            healthBar = monsterHP.healthBar;
-            HP = monsterHP.monsterHP;
-            healthBar.fillAmount = HP;
-
-            //foreach (GameObject enem in Enemy) { enemy = GetComponent<MonsterInstantiate>().monster as GameObject; Debug.Log(enemy.transform.position.ToString()); }
-            // 
+            if (!monsterHP)
+            {
+                Debug.Log("The is no monster");
+            }
+            else
+            {
+                healthBar = monsterHP.healthBar;
+                HP = monsterHP.monsterHP;
+                healthBar.fillAmount = HP;
+                return;
+            }
+            return;
         }
     }
 
@@ -39,19 +46,23 @@ public class Attack : MonoBehaviour
 
     void IsAttacking()
     {
-
-        float distance = Vector3.Distance(player.transform.position, enemy.monster.transform.position);
-
-        if (distance < 4f)
+        if (!enemy || !monsterHP)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                HP -= 10;
-                healthBar.fillAmount = HP / 100;
-                monsterHP.monsterHP = HP;
-                Debug.Log((HP / 100));
+            Debug.Log("No Enemy");
+        }
+        else { 
 
-                //Debug.Log("Atacked : " + monsterHP);
+            float distance = Vector3.Distance(player.transform.position, enemy.monster.transform.position);
+
+            if (distance < 4f)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    HP -= 10;
+                    healthBar.fillAmount = HP / 100;
+                    monsterHP.monsterHP = HP;
+                    Debug.Log((HP / 100));
+                }
             }
         }
     }

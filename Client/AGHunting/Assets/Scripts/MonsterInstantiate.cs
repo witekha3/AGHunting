@@ -7,8 +7,6 @@ public class MonsterInstantiate : MonoBehaviour
     public GameObject monster;
     public string monsterName;
 
-
-
     // Start is called before the first frame update
     void Awake()
     {
