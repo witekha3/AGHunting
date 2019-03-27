@@ -44,6 +44,8 @@ public class Attack : MonoBehaviour
        IsAttacking();
     }
 
+
+
     void IsAttacking()
     {
         if (!enemy || !monsterHP)
@@ -61,7 +63,8 @@ public class Attack : MonoBehaviour
                     HP -= 10;
                     healthBar.fillAmount = HP / 100;
                     monsterHP.monsterHP = HP;
-                    Debug.Log((HP / 100));
+                    //Debug.Log((HP / 100));
+                    FindObjectOfType<AudioManager>().Play("HitMonster");
                 }
             }
         }
