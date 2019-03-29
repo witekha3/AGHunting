@@ -12,13 +12,14 @@ public class Movement : MonoBehaviour
     public Vector3 Velocity;
 
     public LayerMask groundLayers;
-    // Start is called before the first frame update
 
+    OwnTCPClient client;
 
     void Start()
     {
         col = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
+        client = FindObjectOfType<OwnTCPClient>();
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class Movement : MonoBehaviour
         if (Velocity != Vector3.zero)
         {
             rb.MovePosition(rb.position + Velocity * Time.deltaTime);
-
+            client.SendPlayerInfo();
         }
         // jumping
 

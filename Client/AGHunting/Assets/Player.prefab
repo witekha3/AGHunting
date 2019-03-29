@@ -49,6 +49,11 @@ MonoBehaviour:
     volume: 1
     pitch: 0.98
     source: {fileID: 0}
+  - names: CutInAir
+    clip: {fileID: 8300000, guid: 5cc038bb4c3a4d141a2567116ea66c0e, type: 3}
+    volume: 1
+    pitch: 0.98
+    source: {fileID: 0}
 --- !u!1 &4899437984719322548
 GameObject:
   m_ObjectHideFlags: 0

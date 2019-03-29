@@ -4,36 +4,45 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.IO;
 using UnityEngine;
-
 public class OwnTCPClient : MonoBehaviour
 {
-    public Vector3 position;
-   public  GameObject player;
-
-    public GameObject playerCopy;
+    private Vector3 position;
+     public  GameObject player;
+    //public PlayerInstantiate player;
+    private Byte[] bytes;
+    private Byte[] incommingData;
+    //NET
+    public string host="0.tcp.ngrok.io";
+    public int port=10568;
 
     #region private members 	
     private TcpClient socketConnection;
     private Thread clientReceiveThread;
+    private NetworkStream stream;
     #endregion
 
-
+    private void Awake()
+    {
+        socketConnection = new TcpClient(host, port);
+        stream = socketConnection.GetStream();
+    }
 
     void Start()
     {
-        playerCopy = Instantiate(player, new Vector3(0, 15, -13), Quaternion.identity);
+        bytes = new Byte[64];
+         player = GameObject.FindWithTag("Player");
+       // player = FindObjectOfType<PlayerInstantiate>();
         ConnectToTcpServer();
     }
-    void Update()
+
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-           // SendMessage();
-            SendPlayerInfo();
-        }
+        GetPlayersPosition();
     }
 
+    // CONNECTING TO THE SERVER
     private void ConnectToTcpServer()
     {
         try
@@ -49,12 +58,92 @@ public class OwnTCPClient : MonoBehaviour
     }
 
     /// Runs in background clientReceiveThread; Listens for incomming data. 	
+
+    #region private Data
+    short clientChecksum = 222;
+    byte clientMethod = 4;
+    byte clientId = 3;
+    byte[] clientMethodData=new byte[59];
+    #endregion
+    //______________________SENDING INFORMATION TO THE SERVER
+    static void FromShort(short number, out byte byte1, out byte byte2)
+    {
+        byte2 = (byte)(number >> 8);
+        byte1 = (byte)(number & 255);
+    }
+
+    static void ToShort(out short number, byte byte1, byte byte2)
+    {
+        number = BitConverter.ToInt16(new byte[] { byte1, byte2 }, 0);
+    }
+
+    private void PlayerPosition()
+    {
+        Vector3 isMoving = player.GetComponent<Movement>().Velocity;
+        if (isMoving != Vector3.zero)
+        {
+            byte b1ClientPositionX;
+            byte b2ClientPositionX;
+            byte b1ClientPositionY;
+            byte b2ClientPositionY;
+            byte b1ClientPositionZ;
+            byte b2ClientPositionZ;
+            FromShort((short)player.transform.position.x, out b1ClientPositionX, out b2ClientPositionX);
+            FromShort((short)player.transform.position.y, out b1ClientPositionY, out b2ClientPositionY);
+            FromShort((short)player.transform.position.z, out b1ClientPositionZ, out b2ClientPositionZ);
+
+            clientMethod = 0;
+            clientMethodData = new byte []{ b1ClientPositionX , b2ClientPositionX, b1ClientPositionY , b2ClientPositionY, b1ClientPositionZ, b2ClientPositionZ };
+        }
+        
+    }
+
+
+
+    public void SendPlayerInfo()
+    {
+        if (socketConnection == null)
+        {
+            return;
+        }
+        try
+        {
+            // Position of the Player
+            // Get a stream object for writing. 			
+            NetworkStream stream = socketConnection.GetStream();
+            if (stream.CanWrite)
+            {
+                PlayerPosition();
+                byte b1ClientChecksum;
+                byte b2ClientChecksum;
+                FromShort(clientChecksum, out b1ClientChecksum, out b2ClientChecksum);
+                
+                byte[] message = { 0, b1ClientChecksum, b2ClientChecksum, clientId, clientMethod };
+
+                // Adding message to the clientMethodData
+                var data = new byte[clientMethodData.Length + message.Length];
+                message.CopyTo(data, 0);
+                clientMethodData.CopyTo(data, message.Length);
+
+                data[0] = (byte)data.Length;
+                    
+                // Write byte array to socketConnection stream.                 
+                stream.Write(data, 0, data.Length);
+                //Debug.Log("sended ");
+            }
+        }
+        catch (SocketException socketException)
+        {
+            Debug.Log("Socket exception: "+socketException);
+        }
+    }
+
+    //____________________ GETTING INFORMATION FROM SERVER_________________________________________
+
     private void ListenForData()
     {
         try
         {
-            socketConnection = new TcpClient("0.tcp.ngrok.io", 16520);
-            Byte[] bytes = new Byte[64];
             while (true)
             {
                 // Get a stream object for reading 				
@@ -64,11 +153,10 @@ public class OwnTCPClient : MonoBehaviour
                     // Read incomming stream into byte arrary. 					
                     while ((length = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
-                        var incommingData = new byte[length];
+                        incommingData = new byte[length];
                         Array.Copy(bytes, 0, incommingData, 0, length);
                         // Convert byte array to string message. 						
                         string serverMessage = Encoding.ASCII.GetString(incommingData);
-                        Debug.Log("server message received as: " + serverMessage);
                     }
                 }
             }
@@ -78,81 +166,58 @@ public class OwnTCPClient : MonoBehaviour
             Debug.Log("Socket exception: " + socketException);
         }
     }
+    
 
-    /* private void SendMessage()
-     {
-         if (socketConnection == null)
-         {
-             return;
-         }
-         try
-         {
-             // Get a stream object for writing. 			
-             NetworkStream stream = socketConnection.GetStream();
-             if (stream.CanWrite)
-             {
-                 string clientMessage = "This is position of this player";
-                 // Convert string message to byte array.                 
-                 byte[] clientMessageAsByteArray = Encoding.ASCII.GetBytes(clientMessage);
-                 // Write byte array to socketConnection stream.                 
-                 stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);
-                 Debug.Log("Client sent his message - should be received by server");
-             }
-         }
-         catch (SocketException socketException)
-         {
-             Debug.Log("Socket exception: " + socketException);
-         }
-
-     }*/
-
-    //  string clientMethodData = "";
-    //  string clientChecksum = "?";
-    //  string clientId = "";
-    //  string clientMethod = "";
-    int clientLenght = 1000;
-    int clientChecksum = 2;
-    int clientId = 3;
-    int clientMethod = 4;
-    int clientMethodData = 0;
-    public void PlayerPosition()
+    public void GetPlayersPosition()
     {
-        Vector3 isMoving = playerCopy.GetComponent<Movement>().Velocity;
-        if (isMoving != Vector3.zero)
-        {
-            clientMethod = 4;
-            clientMethodData = (int)playerCopy.transform.position.x;
-        }
-        
-    }
-
-    void SendPlayerInfo()
-    {
-
         if (socketConnection == null)
         {
             return;
         }
         try
         {
-            // Position of the Player
+                NetworkStream stream = socketConnection.GetStream();
+                if (stream.CanWrite)
+                {
+                    clientMethod = 1;
+                    byte b1ClientChecksum;
+                    byte b2ClientChecksum;
+                    FromShort(clientChecksum, out b1ClientChecksum, out b2ClientChecksum);
 
-            // Get a stream object for writing. 			
-            NetworkStream stream = socketConnection.GetStream();
-            if (stream.CanWrite)
-            {
-                PlayerPosition();
-                byte[] message = { (byte)clientLenght, (byte)clientChecksum ,(byte)clientId, (byte)clientMethod, (byte)clientMethodData };
-                // Write byte array to socketConnection stream.                 
-                stream.Write(message, 0, message.Length);
-                Debug.Log("sended"+ message);
-            }
+                    byte[] message = { 0, b1ClientChecksum, b2ClientChecksum, clientId, clientMethod, 1, 1 };
+
+
+                    message[0] = (byte)message.Length;
+                    // Write byte array to socketConnection stream.                 
+                    stream.Write(message, 0, message.Length);
+                    //Debug.Log("sended");
+
+
+                    short playerPositionX;
+                    short playerPositionY;
+                    short playerPositionZ;
+
+                    if (incommingData == null)
+                    {
+                    return;
+                    }
+
+                    ToShort(out playerPositionX, incommingData[1], incommingData[2]);
+                    ToShort(out playerPositionY, incommingData[3], incommingData[4]);
+                    ToShort(out playerPositionZ, incommingData[5], incommingData[6]);
+                    
+                    //Debug.Log("server message received as: " + serverMessage);
+
+                    Vector3 newPos= new Vector3((float)playerPositionX,(float)playerPositionY,(float)playerPositionZ);
+                   Debug.Log(newPos.ToString());
+
+                //  player.transform.position = newPos;
+                }
         }
         catch (SocketException socketException)
         {
-            Debug.Log("Socket exception: "+socketException);
+            Debug.Log("Socket exception: " + socketException);
         }
-       
     }
 
 }
