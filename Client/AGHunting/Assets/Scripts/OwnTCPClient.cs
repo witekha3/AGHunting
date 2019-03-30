@@ -10,9 +10,10 @@ public class OwnTCPClient : MonoBehaviour
 {
     private Vector3 position;
      public  GameObject player;
-    //public PlayerInstantiate player;
+
     private Byte[] bytes;
     private Byte[] incommingData;
+
     //NET
     public string host="0.tcp.ngrok.io";
     public int port=10568;
@@ -65,18 +66,21 @@ public class OwnTCPClient : MonoBehaviour
     byte clientId = 3;
     byte[] clientMethodData=new byte[59];
     #endregion
-    //______________________SENDING INFORMATION TO THE SERVER
+    //______________________SENDING INFORMATION TO THE SERVER_________________________________
+    // Converting from short to bytes
     static void FromShort(short number, out byte byte1, out byte byte2)
     {
         byte2 = (byte)(number >> 8);
         byte1 = (byte)(number & 255);
     }
-
+    //Converting from 2 bytes to short
     static void ToShort(out short number, byte byte1, byte byte2)
     {
         number = BitConverter.ToInt16(new byte[] { byte1, byte2 }, 0);
     }
 
+
+    // Method for sending player position to the server
     private void PlayerPosition()
     {
         Vector3 isMoving = player.GetComponent<Movement>().Velocity;
@@ -99,7 +103,7 @@ public class OwnTCPClient : MonoBehaviour
     }
 
 
-
+    // Sending all infro to the server
     public void SendPlayerInfo()
     {
         if (socketConnection == null)
