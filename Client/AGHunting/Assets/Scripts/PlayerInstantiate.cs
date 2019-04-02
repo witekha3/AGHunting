@@ -9,7 +9,7 @@ public class PlayerInstantiate : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        playerNick = myPlayer.name;
+        myPlayer.name = SecondPlayMeny.nick;
         myPlayer.tag = "Player";
         myPlayer=Instantiate(myPlayer, new Vector3(0, 18, -13), Quaternion.identity) as GameObject;
 

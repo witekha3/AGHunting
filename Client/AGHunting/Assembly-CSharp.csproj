@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Animat.cs" />
     <Compile Include="Assets\Scripts\Attack.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MonsterHealth.cs" />
     <Compile Include="Assets\Scripts\MonsterInstantiate.cs" />
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerInstantiate.cs" />
     <Compile Include="Assets\Scripts\Rotation.cs" />
+    <Compile Include="Assets\Scripts\SecondPlayMeny.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

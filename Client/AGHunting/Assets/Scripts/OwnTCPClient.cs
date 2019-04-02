@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.IO;
 using UnityEngine;
+
 public class OwnTCPClient : MonoBehaviour
 {
     private Vector3 position;
@@ -15,8 +16,8 @@ public class OwnTCPClient : MonoBehaviour
     private Byte[] incommingData;
 
     //NET
-    public string host="0.tcp.ngrok.io";
-    public int port=10568;
+    public string host;
+    public int port;
 
     #region private members 	
     private TcpClient socketConnection;
@@ -26,15 +27,18 @@ public class OwnTCPClient : MonoBehaviour
 
     private void Awake()
     {
+        host = SecondPlayMeny.host;
+        port = SecondPlayMeny.port;
         socketConnection = new TcpClient(host, port);
         stream = socketConnection.GetStream();
     }
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        //player = FindObjectOfType<PlayerInstantiate>().gameObject;
+
         bytes = new Byte[64];
-         player = GameObject.FindWithTag("Player");
-       // player = FindObjectOfType<PlayerInstantiate>();
         ConnectToTcpServer();
     }
 
@@ -66,13 +70,19 @@ public class OwnTCPClient : MonoBehaviour
     byte clientId = 3;
     byte[] clientMethodData=new byte[59];
     #endregion
+
+
     //______________________SENDING INFORMATION TO THE SERVER_________________________________
+
+
     // Converting from short to bytes
     static void FromShort(short number, out byte byte1, out byte byte2)
     {
         byte2 = (byte)(number >> 8);
         byte1 = (byte)(number & 255);
     }
+
+
     //Converting from 2 bytes to short
     static void ToShort(out short number, byte byte1, byte byte2)
     {
