@@ -1475,9 +1475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9fa90f3ff9e8d4aa73e6898f20bb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   monsterHP: 0
   healthBar: {fileID: 1248273290938895234}
-  HPBar: {fileID: 0}
 --- !u!1 &2223580492109517352
 GameObject:
   m_ObjectHideFlags: 0

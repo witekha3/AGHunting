@@ -45,6 +45,7 @@ public class MonsterMovement : MonoBehaviour
         {
             rb.MovePosition(rb.position + Velocity * Time.deltaTime);
             animat.SetBool("IsRun", true);
+            FindObjectOfType<AudioManager>().Play("Kamil");
 
         }
         else {
