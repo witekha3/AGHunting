@@ -4,3 +4,6 @@
 [submodule "Server/libs/vector"]
 	path = Server/libs/vector
 	url = https://github.com/eteran/c-vector.git
+[submodule "udp_server/libs/spdlog"]
+	path = udp_server/libs/spdlog
+	url = https://github.com/gabime/spdlog.git
