@@ -8,11 +8,15 @@ public class Animat : MonoBehaviour
     public float RunForward;
     public float RunSide;
     public float Jump;
+    PlayerHealth pHP;
+    Attack attack;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = this.gameObject.GetComponent<Animator>();
+        pHP = FindObjectOfType<PlayerHealth>();
+        attack = FindObjectOfType<Attack>();
     }
 
     // Update is called once per frame
@@ -33,13 +37,26 @@ public class Animat : MonoBehaviour
             animator.SetBool("Jump", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+
+
+        if (attack.IsAttacking())
         {
             animator.SetBool("Attack", true);
         }
         else
         {
             animator.SetBool("Attack", false);
+        }
+
+        if (pHP.playerHP <= 0)
+        {
+            animator.SetBool("IsDie", true);
+        }
+        else
+        {
+            animator.SetBool("IsDie", false);
+
+
         }
     }
 }

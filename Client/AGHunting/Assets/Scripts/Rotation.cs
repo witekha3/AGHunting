@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rotation : MonoBehaviour
 {
     [SerializeField]
-    private Rigidbody rb;
+    public Rigidbody rb;
     public Camera cam;
     public float speed= 3f;
     public float speed_rot = 3f;
