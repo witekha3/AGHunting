@@ -18,5 +18,8 @@
 
 // constants
 
+constexpr PORT DEFAULT_PORT = 15001;
+const IP       DEFAULT_IP   = "127.0.0.1";
+
 
 #endif //UDP_SERVER_CORE_H

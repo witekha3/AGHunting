@@ -9,8 +9,8 @@
 
 namespace ah {
     struct AH_API Host {
-        PORT port;
         IP   ip;
+        PORT port;
     };
 }
 
