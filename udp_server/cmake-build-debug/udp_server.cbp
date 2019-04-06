@@ -109,6 +109,12 @@
 		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/network/SocketUDP.h">
 			<Option target="udp_server"/>
 		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/ServerController.cpp">
+			<Option target="udp_server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/ServerController.h">
+			<Option target="udp_server"/>
+		</Unit>
 		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

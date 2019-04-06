@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o"
   "CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o"
   "CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o"
+  "CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o"
   "udp_server.pdb"
   "udp_server"
 )

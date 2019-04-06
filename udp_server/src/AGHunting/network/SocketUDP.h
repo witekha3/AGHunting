@@ -37,6 +37,10 @@ namespace ah {
             return _host;
         }
 
+        inline void close() {
+            ::close(_sock);
+        }
+
     private:
         Host     _host;
         SOCKET   _sock;

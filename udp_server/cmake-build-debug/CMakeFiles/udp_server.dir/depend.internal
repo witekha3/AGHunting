@@ -35,6 +35,7 @@ CMakeFiles/udp_server.dir/main.cpp.o
  ../src/AGHunting/network/Host.h
  ../src/AGHunting/network/SocketUDP.h
  ../src/AGHunting/network/UDP.h
+ ../src/AGHunting/ui/ServerController.h
  /home/neko/projects/studia/AGHunting/udp_server/main.cpp
 CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o
  ../libs/spdlog/include/spdlog/common.h
@@ -136,3 +137,39 @@ CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o
  ../src/AGHunting/network/UDP.h
  /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/network/SocketUDP.cpp
  /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/network/SocketUDP.h
+CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o
+ ../libs/spdlog/include/spdlog/common.h
+ ../libs/spdlog/include/spdlog/details/console_globals.h
+ ../libs/spdlog/include/spdlog/details/fmt_helper.h
+ ../libs/spdlog/include/spdlog/details/log_msg.h
+ ../libs/spdlog/include/spdlog/details/logger_impl.h
+ ../libs/spdlog/include/spdlog/details/null_mutex.h
+ ../libs/spdlog/include/spdlog/details/os.h
+ ../libs/spdlog/include/spdlog/details/pattern_formatter.h
+ ../libs/spdlog/include/spdlog/details/periodic_worker.h
+ ../libs/spdlog/include/spdlog/details/registry.h
+ ../libs/spdlog/include/spdlog/fmt/bundled/core.h
+ ../libs/spdlog/include/spdlog/fmt/bundled/format-inl.h
+ ../libs/spdlog/include/spdlog/fmt/bundled/format.h
+ ../libs/spdlog/include/spdlog/fmt/bundled/ostream.h
+ ../libs/spdlog/include/spdlog/fmt/fmt.h
+ ../libs/spdlog/include/spdlog/fmt/ostr.h
+ ../libs/spdlog/include/spdlog/formatter.h
+ ../libs/spdlog/include/spdlog/logger.h
+ ../libs/spdlog/include/spdlog/sinks/ansicolor_sink.h
+ ../libs/spdlog/include/spdlog/sinks/base_sink.h
+ ../libs/spdlog/include/spdlog/sinks/ostream_sink.h
+ ../libs/spdlog/include/spdlog/sinks/sink.h
+ ../libs/spdlog/include/spdlog/sinks/stdout_color_sinks.h
+ ../libs/spdlog/include/spdlog/sinks/wincolor_sink.h
+ ../libs/spdlog/include/spdlog/spdlog.h
+ ../libs/spdlog/include/spdlog/tweakme.h
+ ../libs/spdlog/include/spdlog/version.h
+ ../src/AGHunting/Core.h
+ ../src/AGHunting/GameServer.h
+ ../src/AGHunting/misc/Log.h
+ ../src/AGHunting/network/Host.h
+ ../src/AGHunting/network/SocketUDP.h
+ ../src/AGHunting/network/UDP.h
+ /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/ServerController.cpp
+ /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/ServerController.h

@@ -15,6 +15,8 @@
 
 namespace ah {
     class AH_API GameServer {
+        friend class ServerController;
+
     public:
         explicit GameServer(Host&&);
         ~GameServer();
@@ -24,6 +26,7 @@ namespace ah {
 
     private:
         void update();
+        void deinit();
 
         Host      _host;
         SocketUDP _sock;

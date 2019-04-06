@@ -231,6 +231,33 @@ src/AGHunting/network/SocketUDP.cpp.s:
 	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.s
 .PHONY : src/AGHunting/network/SocketUDP.cpp.s
 
+src/AGHunting/ui/ServerController.o: src/AGHunting/ui/ServerController.cpp.o
+
+.PHONY : src/AGHunting/ui/ServerController.o
+
+# target to build an object file
+src/AGHunting/ui/ServerController.cpp.o:
+	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o
+.PHONY : src/AGHunting/ui/ServerController.cpp.o
+
+src/AGHunting/ui/ServerController.i: src/AGHunting/ui/ServerController.cpp.i
+
+.PHONY : src/AGHunting/ui/ServerController.i
+
+# target to preprocess a source file
+src/AGHunting/ui/ServerController.cpp.i:
+	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.i
+.PHONY : src/AGHunting/ui/ServerController.cpp.i
+
+src/AGHunting/ui/ServerController.s: src/AGHunting/ui/ServerController.cpp.s
+
+.PHONY : src/AGHunting/ui/ServerController.s
+
+# target to generate assembly for a file
+src/AGHunting/ui/ServerController.cpp.s:
+	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.s
+.PHONY : src/AGHunting/ui/ServerController.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -252,6 +279,9 @@ help:
 	@echo "... src/AGHunting/network/SocketUDP.o"
 	@echo "... src/AGHunting/network/SocketUDP.i"
 	@echo "... src/AGHunting/network/SocketUDP.s"
+	@echo "... src/AGHunting/ui/ServerController.o"
+	@echo "... src/AGHunting/ui/ServerController.i"
+	@echo "... src/AGHunting/ui/ServerController.s"
 .PHONY : help
 
 

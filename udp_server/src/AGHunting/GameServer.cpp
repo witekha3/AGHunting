@@ -24,11 +24,18 @@ namespace ah {
     }
 
     void GameServer::start() {
-        AH_INFO("Server is listening on {0}:{1}", _host.ip.c_str(), _host.port);
+        AH_INFO("Game server is listening on {0}:{1}.", _host.ip.c_str(), _host.port);
 
         while (_is_running) {
             update();
         }
+
+        deinit();
+        AH_INFO("Server is shutting down.");
+    }
+
+    void GameServer::deinit() {
+
     }
 
     bool GameServer::init() {

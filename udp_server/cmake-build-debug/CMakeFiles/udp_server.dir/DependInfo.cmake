@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/GameServer.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o"
   "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/misc/Log.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o"
   "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/network/SocketUDP.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o"
+  "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/ServerController.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -1,0 +1,35 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0732a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0732a.dir/build.make CMakeFiles/cmTC_0732a.dir/build
+make[1]: Wejście do katalogu '/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0732a.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_0732a.dir/CheckSymbolExists.c.o   -c /home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_0732a
+/home/neko/clion/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0732a.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_0732a.dir/CheckSymbolExists.c.o  -o cmTC_0732a 
+CMakeFiles/cmTC_0732a.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_0732a.dir/build.make:86: polecenia dla obiektu 'cmTC_0732a' nie powiodły się
+make[1]: *** [cmTC_0732a] Błąd 1
+make[1]: Opuszczenie katalogu '/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: polecenia dla obiektu 'cmTC_0732a/fast' nie powiodły się
+make: *** [cmTC_0732a/fast] Błąd 2
+
+File /home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
