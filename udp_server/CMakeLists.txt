@@ -10,6 +10,6 @@ file(GLOB SRC "${SRC_DIR}/*.cpp"
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src
                     ${LIB_DIR}/spdlog/include)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 add_executable(udp_server main.cpp ${SRC})

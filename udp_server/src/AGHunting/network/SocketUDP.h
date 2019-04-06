@@ -5,6 +5,10 @@
 #ifndef UDP_SERVER_SOCKETUDP_H
 #define UDP_SERVER_SOCKETUDP_H
 
+#include <cstring>
+#include <cstdlib>
+#include <optional>
+
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
@@ -12,26 +16,32 @@
 
 #include <AGHunting/Core.h>
 #include <AGHunting/network/Host.h>
+#include <AGHunting/network/UDP.h>
+
 #include <AGHunting/misc/Log.h>
 
 namespace ah {
-    enum class AH_API SockType : uint8_t {
-        SERVER,
-        CLIENT
-    };
 
     class AH_API SocketUDP {
     public:
-        SocketUDP(Host&, const SockType&&);
+        SocketUDP(const Host&);
         ~SocketUDP();
 
         bool bind();
 
+        std::optional<UDP_Packet> recv_from();
+        size_t send_to(UDP_Addr, char*, size_t);
+
+        // getters / setters
+        inline Host getHost() const {
+            return _host;
+        }
+
     private:
         Host     _host;
-        SockType _type;
-
         SOCKET   _sock;
+
+        sockaddr_in _addr;
     };
 }
 

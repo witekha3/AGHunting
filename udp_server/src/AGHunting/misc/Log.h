@@ -38,11 +38,11 @@ namespace ah {
     };
 }
 
-#define AH_FATAL(...) ah::Log::getAppLogger()->critical(__VA_ARGS__);
-#define AH_ERROR(...) ah::Log::getAppLogger()->error(__VA_ARGS__);
-#define AH_WARN(...) ah::Log::getAppLogger()->warn(__VA_ARGS__)
-#define AH_INFO(...) ah::Log::getAppLogger()->info(__VA_ARGS__)
-#define AH_TRACE(...) ah::Log::getAppLogger()->trace(__VA_ARGS__)
+#define AH_FATAL(...) ah::Log::getCoreLogger()->critical(__VA_ARGS__);
+#define AH_ERROR(...) ah::Log::getCoreLogger()->error(__VA_ARGS__);
+#define AH_WARN(...) ah::Log::getCoreLogger()->warn(__VA_ARGS__)
+#define AH_INFO(...) ah::Log::getCoreLogger()->info(__VA_ARGS__)
+#define AH_TRACE(...) ah::Log::getCoreLogger()->trace(__VA_ARGS__)
 
 #define AH_ASSERT(x, ...) if (!(x)) { AH_FATAL(__VA_ARGS__); raise(SIGTRAP); }
 
