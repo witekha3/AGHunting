@@ -5,6 +5,14 @@
 #ifndef UDP_SERVER_UDP_H
 #define UDP_SERVER_UDP_H
 
+#include <cstdlib>
+#include <cstring>
+
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
 #include <AGHunting/Core.h>
 #include <AGHunting/network/Host.h>
 

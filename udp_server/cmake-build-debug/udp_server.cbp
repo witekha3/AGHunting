@@ -36,6 +36,7 @@
 				<Compiler>
 					<Add directory="/home/neko/projects/studia/AGHunting/udp_server/src"/>
 					<Add directory="/home/neko/projects/studia/AGHunting/udp_server/libs/spdlog/include"/>
+					<Add directory="/home/neko/projects/studia/AGHunting/udp_server/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -61,6 +62,7 @@
 				<Compiler>
 					<Add directory="/home/neko/projects/studia/AGHunting/udp_server/src"/>
 					<Add directory="/home/neko/projects/studia/AGHunting/udp_server/libs/spdlog/include"/>
+					<Add directory="/home/neko/projects/studia/AGHunting/udp_server/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -97,6 +99,12 @@
 		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/GameServer.h">
 			<Option target="udp_server"/>
 		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/game/RequestHandler.cpp">
+			<Option target="udp_server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/game/RequestHandler.h">
+			<Option target="udp_server"/>
+		</Unit>
 		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/misc/Log.cpp">
 			<Option target="udp_server"/>
 		</Unit>
@@ -107,6 +115,12 @@
 			<Option target="udp_server"/>
 		</Unit>
 		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/network/SocketUDP.h">
+			<Option target="udp_server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/Auth.cpp">
+			<Option target="udp_server"/>
+		</Unit>
+		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/Auth.h">
 			<Option target="udp_server"/>
 		</Unit>
 		<Unit filename="/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/ServerController.cpp">

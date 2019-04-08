@@ -13,6 +13,7 @@ namespace ah {
 
     SocketUDP::~SocketUDP() {
         if (_sock != 0) {
+            ::shutdown(_sock, SHUT_RDWR);
             ::close(_sock);
         }
     }

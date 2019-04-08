@@ -9,11 +9,6 @@
 #include <cstdlib>
 #include <optional>
 
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-
 #include <AGHunting/Core.h>
 #include <AGHunting/network/Host.h>
 #include <AGHunting/network/UDP.h>
@@ -38,6 +33,7 @@ namespace ah {
         }
 
         inline void close() {
+            ::shutdown(_sock, SHUT_RDWR);
             ::close(_sock);
         }
 

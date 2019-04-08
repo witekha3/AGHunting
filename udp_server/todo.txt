@@ -1,0 +1,23 @@
+UDP_SERVER, to do:
+
+1. Controller
+    - create some kind of auth (bcrypt + login, mb mysql/nosql database for accounts??)
+    - implement methods
+        - list users
+        - kick
+        - restart
+
+
+2. Game_server
+    - accept connection
+    - create class for Player
+    - create ConnectionHandler
+    - create packet from payload
+    - create some map for holding players
+
+
+
+
+
+
+

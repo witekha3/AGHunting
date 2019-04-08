@@ -5,12 +5,14 @@
 #ifndef UDP_SERVER_CORE_H
 #define UDP_SERVER_CORE_H
 
+#include <future>
 #include <string>
 #include <cstdint>
 
 // macros/defines
 
 #define AH_API
+#define RUN_ASYNC(func, ...) std::async(std::launch::async, func, __VA_ARGS__);
 
 #define PORT   uint16_t
 #define IP     std::string

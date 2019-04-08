@@ -29,6 +29,8 @@ namespace ah {
                 continue;
             }
 
+            // to do some auth!
+
             AH_INFO("Controller connected.");
 
             char buff[CONTROLLER_BUF_SIZE];
@@ -38,7 +40,7 @@ namespace ah {
 
                 size_t received = recv(controller_sock, buff, CONTROLLER_BUF_SIZE, 0);
 
-                if (received <= 0) {
+                if (received <= 0 && _server._is_running) {
                     AH_INFO("Connection with controller lost.");
                     break;
                 }
@@ -47,6 +49,7 @@ namespace ah {
                     case Request::SHUTDOWN: {
                         _server._is_running = false;
                         _server._sock.close();
+                        break;
                     }
 
                     case Request::UNKNOWN:

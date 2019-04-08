@@ -16,6 +16,7 @@
 #include <AGHunting/GameServer.h>
 #include <AGHunting/network/Host.h>
 #include <AGHunting/misc/Log.h>
+#include <AGHunting/ui/Auth.h>
 
 namespace ah {
 

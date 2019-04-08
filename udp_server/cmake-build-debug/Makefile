@@ -177,6 +177,33 @@ src/AGHunting/GameServer.cpp.s:
 	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.s
 .PHONY : src/AGHunting/GameServer.cpp.s
 
+src/AGHunting/game/RequestHandler.o: src/AGHunting/game/RequestHandler.cpp.o
+
+.PHONY : src/AGHunting/game/RequestHandler.o
+
+# target to build an object file
+src/AGHunting/game/RequestHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.o
+.PHONY : src/AGHunting/game/RequestHandler.cpp.o
+
+src/AGHunting/game/RequestHandler.i: src/AGHunting/game/RequestHandler.cpp.i
+
+.PHONY : src/AGHunting/game/RequestHandler.i
+
+# target to preprocess a source file
+src/AGHunting/game/RequestHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.i
+.PHONY : src/AGHunting/game/RequestHandler.cpp.i
+
+src/AGHunting/game/RequestHandler.s: src/AGHunting/game/RequestHandler.cpp.s
+
+.PHONY : src/AGHunting/game/RequestHandler.s
+
+# target to generate assembly for a file
+src/AGHunting/game/RequestHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.s
+.PHONY : src/AGHunting/game/RequestHandler.cpp.s
+
 src/AGHunting/misc/Log.o: src/AGHunting/misc/Log.cpp.o
 
 .PHONY : src/AGHunting/misc/Log.o
@@ -231,6 +258,33 @@ src/AGHunting/network/SocketUDP.cpp.s:
 	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.s
 .PHONY : src/AGHunting/network/SocketUDP.cpp.s
 
+src/AGHunting/ui/Auth.o: src/AGHunting/ui/Auth.cpp.o
+
+.PHONY : src/AGHunting/ui/Auth.o
+
+# target to build an object file
+src/AGHunting/ui/Auth.cpp.o:
+	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.o
+.PHONY : src/AGHunting/ui/Auth.cpp.o
+
+src/AGHunting/ui/Auth.i: src/AGHunting/ui/Auth.cpp.i
+
+.PHONY : src/AGHunting/ui/Auth.i
+
+# target to preprocess a source file
+src/AGHunting/ui/Auth.cpp.i:
+	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.i
+.PHONY : src/AGHunting/ui/Auth.cpp.i
+
+src/AGHunting/ui/Auth.s: src/AGHunting/ui/Auth.cpp.s
+
+.PHONY : src/AGHunting/ui/Auth.s
+
+# target to generate assembly for a file
+src/AGHunting/ui/Auth.cpp.s:
+	$(MAKE) -f CMakeFiles/udp_server.dir/build.make CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.s
+.PHONY : src/AGHunting/ui/Auth.cpp.s
+
 src/AGHunting/ui/ServerController.o: src/AGHunting/ui/ServerController.cpp.o
 
 .PHONY : src/AGHunting/ui/ServerController.o
@@ -273,12 +327,18 @@ help:
 	@echo "... src/AGHunting/GameServer.o"
 	@echo "... src/AGHunting/GameServer.i"
 	@echo "... src/AGHunting/GameServer.s"
+	@echo "... src/AGHunting/game/RequestHandler.o"
+	@echo "... src/AGHunting/game/RequestHandler.i"
+	@echo "... src/AGHunting/game/RequestHandler.s"
 	@echo "... src/AGHunting/misc/Log.o"
 	@echo "... src/AGHunting/misc/Log.i"
 	@echo "... src/AGHunting/misc/Log.s"
 	@echo "... src/AGHunting/network/SocketUDP.o"
 	@echo "... src/AGHunting/network/SocketUDP.i"
 	@echo "... src/AGHunting/network/SocketUDP.s"
+	@echo "... src/AGHunting/ui/Auth.o"
+	@echo "... src/AGHunting/ui/Auth.i"
+	@echo "... src/AGHunting/ui/Auth.s"
 	@echo "... src/AGHunting/ui/ServerController.o"
 	@echo "... src/AGHunting/ui/ServerController.i"
 	@echo "... src/AGHunting/ui/ServerController.s"

@@ -4,6 +4,8 @@
 
 #include "GameServer.h"
 
+#define BIND_API(func, ...) std::bind(&GameServer::func, this, __VA_ARGS__)
+
 namespace ah {
 
     GameServer::GameServer(Host&& h)
@@ -20,7 +22,15 @@ namespace ah {
     }
 
     void GameServer::update() {
+        auto request = _sock.recv_from();
 
+        if (!request) {
+            AH_ERROR("Received invalid UDP packet");
+        }
+
+        auto res = RUN_ASYNC(&RequestHandler::handle, (ServerAPI){
+            BIND_API(api_response, request->addr, std::placeholders::_1, std::placeholders::_2)
+        }, *request);
     }
 
     void GameServer::start() {
@@ -31,6 +41,7 @@ namespace ah {
         }
 
         deinit();
+
         AH_INFO("Server is shutting down.");
     }
 

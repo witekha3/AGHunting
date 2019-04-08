@@ -83,9 +83,22 @@ CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/GameServer.cpp -o CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.s
 
+CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.o: CMakeFiles/udp_server.dir/flags.make
+CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.o: ../src/AGHunting/game/RequestHandler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.o -c /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/game/RequestHandler.cpp
+
+CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/game/RequestHandler.cpp > CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.i
+
+CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/game/RequestHandler.cpp -o CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.s
+
 CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o: CMakeFiles/udp_server.dir/flags.make
 CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o: ../src/AGHunting/misc/Log.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o -c /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/misc/Log.cpp
 
 CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.i: cmake_force
@@ -98,7 +111,7 @@ CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.s: cmake_force
 
 CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o: CMakeFiles/udp_server.dir/flags.make
 CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o: ../src/AGHunting/network/SocketUDP.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o -c /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/network/SocketUDP.cpp
 
 CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.i: cmake_force
@@ -109,9 +122,22 @@ CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/network/SocketUDP.cpp -o CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.s
 
+CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.o: CMakeFiles/udp_server.dir/flags.make
+CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.o: ../src/AGHunting/ui/Auth.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.o -c /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/Auth.cpp
+
+CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/Auth.cpp > CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.i
+
+CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/Auth.cpp -o CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.s
+
 CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: CMakeFiles/udp_server.dir/flags.make
 CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: ../src/AGHunting/ui/ServerController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o -c /home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/ServerController.cpp
 
 CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.i: cmake_force
@@ -126,8 +152,10 @@ CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.s: cmake_force
 udp_server_OBJECTS = \
 "CMakeFiles/udp_server.dir/main.cpp.o" \
 "CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o" \
+"CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.o" \
 "CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o" \
 "CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o" \
+"CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.o" \
 "CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o"
 
 # External object files for target udp_server
@@ -135,12 +163,14 @@ udp_server_EXTERNAL_OBJECTS =
 
 udp_server: CMakeFiles/udp_server.dir/main.cpp.o
 udp_server: CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o
+udp_server: CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.o
 udp_server: CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o
 udp_server: CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o
+udp_server: CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.o
 udp_server: CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o
 udp_server: CMakeFiles/udp_server.dir/build.make
 udp_server: CMakeFiles/udp_server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable udp_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable udp_server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/udp_server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
