@@ -56,7 +56,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - names: Kamil
     clip: {fileID: 8300000, guid: 539d8906b78398945b5053d082d55bea, type: 3}
-    volume: 1
+    volume: 0.065
     pitch: 0.98
     source: {fileID: 0}
 --- !u!1 &4899437984719322548
