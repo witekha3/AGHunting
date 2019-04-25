@@ -1,6 +1,7 @@
+
 /*
  *
- * AGHunting UDP SERVE
+ * AGHunting UDP SERVER
  * Kacper Czyż & Witold Haza
  *
  */
@@ -9,20 +10,22 @@
 #include <AGHunting/ui/ServerController.h>
 #include <AGHunting/misc/Log.h>
 
-int main() {
+#define LOCAL_IP "192.168.1.7"
+
+int main(int argc, char** argv) {
     ah::Log::init();
 
     ah::GameServer s({
-        DEFAULT_IP,
+        LOCAL_IP,
         DEFAULT_PORT
     });
 
-    ah::ServerController controller(s, { "127.0.0.1", 1337 });
+    ah::ServerController controller(s, { "192.167.1.7", 1337 });
 
-    if (!controller.start()) {
+    /*if (!controller.start()) {
         AH_FATAL("Failed to setup server controller.");
         return -2;
-    }
+    }*/
 
     if (!s.init()) {
         AH_FATAL("Failed to init game server.");

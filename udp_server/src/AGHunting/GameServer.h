@@ -11,11 +11,15 @@
 
 #include <AGHunting/Core.h>
 #include <AGHunting/network/SocketUDP.h>
+#include <AGHunting/network/AsyncRequestHandler.h>
+#include <AGHunting/network/RequestHandler.h>
+
+#include <AGHunting/game/PayloadHandler.h>
+
 #include <AGHunting/misc/Log.h>
 
-#include <AGHunting/game/RequestHandler.h>
-
 namespace ah {
+
     class AH_API GameServer {
         friend class ServerController;
 
@@ -40,6 +44,7 @@ namespace ah {
             _sock.send_to(addr, buff, len);
         }
 
+        RequestHandlerPtr _request_handler;
     };
 
     static GameServer* Instance = nullptr;

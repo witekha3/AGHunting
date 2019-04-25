@@ -1,24 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0732a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0732a.dir/build.make CMakeFiles/cmTC_0732a.dir/build
-make[1]: Wejście do katalogu '/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0732a.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_0732a.dir/CheckSymbolExists.c.o   -c /home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_0732a
-/home/neko/clion/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0732a.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_0732a.dir/CheckSymbolExists.c.o  -o cmTC_0732a 
-CMakeFiles/cmTC_0732a.dir/CheckSymbolExists.c.o: In function `main':
-CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+Run Build Command(s):/usr/bin/make cmTC_57d46/fast 
+/usr/bin/make -f CMakeFiles/cmTC_57d46.dir/build.make CMakeFiles/cmTC_57d46.dir/build
+make[1]: Entering directory '/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_57d46.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_57d46.dir/CheckSymbolExists.c.o   -c /home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_57d46
+/home/neko/clion-2019.1.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_57d46.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_57d46.dir/CheckSymbolExists.c.o  -o cmTC_57d46 
+CMakeFiles/cmTC_57d46.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_0732a.dir/build.make:86: polecenia dla obiektu 'cmTC_0732a' nie powiodły się
-make[1]: *** [cmTC_0732a] Błąd 1
-make[1]: Opuszczenie katalogu '/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp'
-Makefile:121: polecenia dla obiektu 'cmTC_0732a/fast' nie powiodły się
-make: *** [cmTC_0732a/fast] Błąd 2
+CMakeFiles/cmTC_57d46.dir/build.make:86: recipe for target 'cmTC_57d46' failed
+make[1]: *** [cmTC_57d46] Error 1
+make[1]: Leaving directory '/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_57d46/fast' failed
+make: *** [cmTC_57d46/fast] Error 2
 
-File /home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
