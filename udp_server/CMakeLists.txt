@@ -15,7 +15,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_definitions(-lbcrypt)
 
-add_executable(udp_server main.cpp ${SRC} src/AGHunting/network/RequestHandler.h src/AGHunting/network/AsyncRequestHandler.h src/AGHunting/game/PayloadHandler.cpp src/AGHunting/game/PayloadHandler.h src/AGHunting/ServerAPI.h src/AGHunting/game/Player.h)
+add_executable(udp_server main.cpp ${SRC} src/AGHunting/network/RequestHandler.h src/AGHunting/network/AsyncRequestHandler.h src/AGHunting/game/PayloadHandler.cpp src/AGHunting/game/PayloadHandler.h src/AGHunting/ServerAPI.h src/AGHunting/game/Player.h src/AGHunting/game/api/GamePacket.h src/AGHunting/game/api/GamePacketParser.h)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)

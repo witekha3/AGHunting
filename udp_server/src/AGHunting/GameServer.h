@@ -6,6 +6,7 @@
 #define UDP_SERVER_GAMESERVER_H
 
 #include <map>
+#include <vector>
 #include <functional>
 #include <future>
 
@@ -15,6 +16,7 @@
 #include <AGHunting/network/RequestHandler.h>
 
 #include <AGHunting/game/PayloadHandler.h>
+#include <AGHunting/game/Player.h>
 
 #include <AGHunting/misc/Log.h>
 
@@ -38,6 +40,8 @@ namespace ah {
         SocketUDP _sock;
 
         bool _is_running;
+
+        std::vector<Player> _players;
 
         // server api
         inline void api_response(UDP_Addr addr, char* buff, size_t len) {

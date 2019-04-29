@@ -3,3 +3,8 @@
 //
 
 #include "PayloadHandler.h"
+
+namespace ah {
+
+    GamePacketParserPtr PayloadHandler::_game_packet_parser = GamePacketParser::createInstance();
+}

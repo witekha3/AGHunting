@@ -11,7 +11,8 @@
 namespace ah {
 
     struct AH_API Player {
-
+        UDP_Addr  addr;
+        AH_USHORT id;
     };
 }
 

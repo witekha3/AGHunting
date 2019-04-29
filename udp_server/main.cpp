@@ -16,11 +16,11 @@ int main(int argc, char** argv) {
     ah::Log::init();
 
     ah::GameServer s({
-        LOCAL_IP,
+        DEFAULT_IP,
         DEFAULT_PORT
     });
 
-    ah::ServerController controller(s, { "192.167.1.7", 1337 });
+    ah::ServerController controller(s, { DEFAULT_IP, 1337 });
 
     /*if (!controller.start()) {
         AH_FATAL("Failed to setup server controller.");

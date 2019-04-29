@@ -30,7 +30,9 @@ namespace ah {
             AH_ERROR("Received invalid UDP packet");
         }
 
-        _request_handler->handle(request.value(), {});
+        _request_handler->handle(request.value(), {
+            BIND_API(api_response, request->addr, std::placeholders::_1, std::placeholders::_2)
+        });
     }
 
     void GameServer::start() {
