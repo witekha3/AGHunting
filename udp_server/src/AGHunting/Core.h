@@ -19,6 +19,10 @@
 #define IP     std::string
 #define SOCKET int
 
+#define AH_SHORT  short
+#define AH_USHORT unsigned short
+
+
 // constants
 
 constexpr PORT DEFAULT_PORT = 15001;

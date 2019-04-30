@@ -31,7 +31,10 @@ namespace ah {
         }
 
         _request_handler->handle(request.value(), {
-            BIND_API(api_response, request->addr, std::placeholders::_1, std::placeholders::_2)
+            BIND_API(api_response, request->addr, std::placeholders::_1, std::placeholders::_2),
+            BIND_API(api_sendAll, std::placeholders::_1, std::placeholders::_2),
+            BIND_API(api_addNewPlayer, std::placeholders::_1),
+            BIND_API(api_getPlayerPtr, std::placeholders::_1)
         });
     }
 

@@ -111,6 +111,9 @@
 		<Unit filename="/home/neko/kapik/projects/AGHunting/udp_server/src/AGHunting/game/Player.h">
 			<Option target="udp_server"/>
 		</Unit>
+		<Unit filename="/home/neko/kapik/projects/AGHunting/udp_server/src/AGHunting/game/api/GameAPI_Method_Dispatcher.h">
+			<Option target="udp_server"/>
+		</Unit>
 		<Unit filename="/home/neko/kapik/projects/AGHunting/udp_server/src/AGHunting/game/api/GamePacket.h">
 			<Option target="udp_server"/>
 		</Unit>

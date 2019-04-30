@@ -38,6 +38,7 @@ CMakeFiles/udp_server.dir/main.cpp.o: ../src/AGHunting/GameServer.h
 CMakeFiles/udp_server.dir/main.cpp.o: ../src/AGHunting/ServerAPI.h
 CMakeFiles/udp_server.dir/main.cpp.o: ../src/AGHunting/game/PayloadHandler.h
 CMakeFiles/udp_server.dir/main.cpp.o: ../src/AGHunting/game/Player.h
+CMakeFiles/udp_server.dir/main.cpp.o: ../src/AGHunting/game/api/GameAPI_Method_Dispatcher.h
 CMakeFiles/udp_server.dir/main.cpp.o: ../src/AGHunting/game/api/GamePacket.h
 CMakeFiles/udp_server.dir/main.cpp.o: ../src/AGHunting/game/api/GamePacketParser.h
 CMakeFiles/udp_server.dir/main.cpp.o: ../src/AGHunting/misc/Log.h
@@ -81,6 +82,7 @@ CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o: ../src/AGHunting/Core.
 CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o: ../src/AGHunting/ServerAPI.h
 CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o: ../src/AGHunting/game/PayloadHandler.h
 CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o: ../src/AGHunting/game/Player.h
+CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o: ../src/AGHunting/game/api/GameAPI_Method_Dispatcher.h
 CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o: ../src/AGHunting/game/api/GamePacket.h
 CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o: ../src/AGHunting/game/api/GamePacketParser.h
 CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o: ../src/AGHunting/misc/Log.h
@@ -122,6 +124,7 @@ CMakeFiles/udp_server.dir/src/AGHunting/game/PayloadHandler.cpp.o: ../libs/spdlo
 CMakeFiles/udp_server.dir/src/AGHunting/game/PayloadHandler.cpp.o: ../src/AGHunting/Core.h
 CMakeFiles/udp_server.dir/src/AGHunting/game/PayloadHandler.cpp.o: ../src/AGHunting/ServerAPI.h
 CMakeFiles/udp_server.dir/src/AGHunting/game/PayloadHandler.cpp.o: ../src/AGHunting/game/Player.h
+CMakeFiles/udp_server.dir/src/AGHunting/game/PayloadHandler.cpp.o: ../src/AGHunting/game/api/GameAPI_Method_Dispatcher.h
 CMakeFiles/udp_server.dir/src/AGHunting/game/PayloadHandler.cpp.o: ../src/AGHunting/game/api/GamePacket.h
 CMakeFiles/udp_server.dir/src/AGHunting/game/PayloadHandler.cpp.o: ../src/AGHunting/game/api/GamePacketParser.h
 CMakeFiles/udp_server.dir/src/AGHunting/game/PayloadHandler.cpp.o: ../src/AGHunting/misc/Log.h
@@ -241,6 +244,7 @@ CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: ../src/AGHunt
 CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: ../src/AGHunting/ServerAPI.h
 CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: ../src/AGHunting/game/PayloadHandler.h
 CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: ../src/AGHunting/game/Player.h
+CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: ../src/AGHunting/game/api/GameAPI_Method_Dispatcher.h
 CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: ../src/AGHunting/game/api/GamePacket.h
 CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: ../src/AGHunting/game/api/GamePacketParser.h
 CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o: ../src/AGHunting/misc/Log.h

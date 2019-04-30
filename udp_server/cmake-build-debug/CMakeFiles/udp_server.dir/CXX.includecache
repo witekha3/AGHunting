@@ -489,6 +489,8 @@ AGHunting/game/api/GamePacket.h
 -
 AGHunting/game/api/GamePacketParser.h
 -
+AGHunting/game/api/GameAPI_Method_Dispatcher.h
+-
 AGHunting/game/Player.h
 -
 
@@ -496,6 +498,14 @@ AGHunting/game/Player.h
 AGHunting/Core.h
 -
 AGHunting/network/UDP.h
+-
+
+../src/AGHunting/game/api/GameAPI_Method_Dispatcher.h
+functional
+-
+AGHunting/Core.h
+-
+AGHunting/game/api/GamePacket.h
 -
 
 ../src/AGHunting/game/api/GamePacket.h
@@ -682,6 +692,8 @@ AGHunting/misc/Log.h
 AGHunting/game/api/GamePacket.h
 -
 AGHunting/game/api/GamePacketParser.h
+-
+AGHunting/game/api/GameAPI_Method_Dispatcher.h
 -
 AGHunting/game/Player.h
 -

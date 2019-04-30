@@ -33,7 +33,7 @@ namespace ah {
             p.id        = (unsigned char)packet.data[3];
             p.method    = static_cast<GameAPI_Method>((unsigned char)packet.data[4]);
 
-            memcpy(p.data, &packet.data[5], packet.len - AH_RAW_PACKET_LEN);
+            memcpy(&p.data[0], &packet.data[5], packet.len - AH_RAW_PACKET_LEN);
 
             return p;
         }

@@ -48,6 +48,25 @@ namespace ah {
             _sock.send_to(addr, buff, len);
         }
 
+        inline void api_sendAll(char* buff, size_t len) {
+            for (auto& p : _players) {
+                _sock.send_to(p.addr, buff, len);
+            }
+        }
+
+        inline void api_addNewPlayer(Player p) {
+            _players.push_back(p);
+        }
+
+        inline Player* api_getPlayerPtr(AH_USHORT id) {
+            for (auto& p : _players) {
+                if (p.id == id) {
+                    return &p;
+                }
+            }
+            return nullptr;
+        }
+
         RequestHandlerPtr _request_handler;
     };
 
