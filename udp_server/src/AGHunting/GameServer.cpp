@@ -15,6 +15,8 @@ namespace ah {
     {
         AH_ASSERT(!Instance, "Instance of GameServer already exists.");
         Instance = this;
+
+        _request_handler = AsyncRequestHandler<PayloadHandler>::createInstance();
     }
 
     GameServer::~GameServer() {
@@ -28,9 +30,12 @@ namespace ah {
             AH_ERROR("Received invalid UDP packet");
         }
 
-        auto res = RUN_ASYNC(&RequestHandler::handle, (ServerAPI){
-            BIND_API(api_response, request->addr, std::placeholders::_1, std::placeholders::_2)
-        }, *request);
+        _request_handler->handle(request.value(), {
+            BIND_API(api_response, request->addr, std::placeholders::_1, std::placeholders::_2),
+            BIND_API(api_sendAll, std::placeholders::_1, std::placeholders::_2),
+            BIND_API(api_addNewPlayer, std::placeholders::_1),
+            BIND_API(api_getPlayerPtr, std::placeholders::_1)
+        });
     }
 
     void GameServer::start() {

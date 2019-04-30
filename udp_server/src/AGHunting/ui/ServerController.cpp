@@ -30,7 +30,6 @@ namespace ah {
             }
 
             // to do some auth!
-
             AH_INFO("Controller connected.");
 
             char buff[CONTROLLER_BUF_SIZE];

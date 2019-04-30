@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/neko/projects/studia/AGHunting/udp_server/main.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/main.cpp.o"
-  "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/GameServer.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o"
-  "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/game/RequestHandler.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/game/RequestHandler.cpp.o"
-  "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/misc/Log.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o"
-  "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/network/SocketUDP.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o"
-  "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/Auth.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.o"
-  "/home/neko/projects/studia/AGHunting/udp_server/src/AGHunting/ui/ServerController.cpp" "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o"
+  "/home/neko/kapik/projects/AGHunting/udp_server/main.cpp" "/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/main.cpp.o"
+  "/home/neko/kapik/projects/AGHunting/udp_server/src/AGHunting/GameServer.cpp" "/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/GameServer.cpp.o"
+  "/home/neko/kapik/projects/AGHunting/udp_server/src/AGHunting/game/PayloadHandler.cpp" "/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/game/PayloadHandler.cpp.o"
+  "/home/neko/kapik/projects/AGHunting/udp_server/src/AGHunting/misc/Log.cpp" "/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/misc/Log.cpp.o"
+  "/home/neko/kapik/projects/AGHunting/udp_server/src/AGHunting/network/SocketUDP.cpp" "/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/network/SocketUDP.cpp.o"
+  "/home/neko/kapik/projects/AGHunting/udp_server/src/AGHunting/ui/Auth.cpp" "/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/ui/Auth.cpp.o"
+  "/home/neko/kapik/projects/AGHunting/udp_server/src/AGHunting/ui/ServerController.cpp" "/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/CMakeFiles/udp_server.dir/src/AGHunting/ui/ServerController.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

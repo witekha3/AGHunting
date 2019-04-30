@@ -1,4 +1,4 @@
-/home/neko/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/neko/projects/studia/AGHunting/udp_server
+/home/neko/clion-2019.1.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/neko/kapik/projects/AGHunting/udp_server
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug
+-- Build files have been written to: /home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug

@@ -1,4 +1,4 @@
-# Install script for directory: /home/neko/projects/studia/AGHunting/udp_server
+# Install script for directory: /home/neko/kapik/projects/AGHunting/udp_server
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/neko/projects/studia/AGHunting/udp_server/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/neko/kapik/projects/AGHunting/udp_server/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

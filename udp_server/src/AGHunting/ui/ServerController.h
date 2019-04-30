@@ -11,6 +11,7 @@
 #include <string>
 #include <cstdio>
 #include <cstdlib>
+#include <unistd.h>
 
 #include <AGHunting/Core.h>
 #include <AGHunting/GameServer.h>
