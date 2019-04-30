@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region include
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -7,6 +8,9 @@ using System.Text;
 using System.Threading;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+#endregion
 public class UDPClient : MonoBehaviour
 {
     #region NET things	
@@ -22,10 +26,15 @@ public class UDPClient : MonoBehaviour
     public GameObject player;
     public int numberOfPlayers;
 
-    short clientChecksum = 0;  // CHECKSUM OF THE MESSAGE
-    byte clientMethod = 0; // WHAT INFORMATION IS CONTATINED (FOR EXAMPLE 0 IS POSITION OF THE PLAYER)
-    byte clientId = 0; // ID OF THE PLAYER
-    byte[] clientMethodData = new byte[59]; // HERE WILL BE 
+    short clientChecksum = 0;  // CHECKSUM OF THE MESSAGE (TO SERVER)
+    byte clientMethod = 0; // WHAT INFORMATION IS CONTATINED (FOR EXAMPLE 0 IS POSITION OF THE PLAYER) (TO SERVER)
+    byte clientId = 0; // ID OF THE PLAYER (if ID==0, then he can not join) (TO SERVER)
+    byte[] clientMethodData = new byte[59]; // HERE WILL BE  (TO SERVER)
+
+    short recivedClientChecksum = 0;  // CHECKSUM OF THE MESSAGE (TO CLIENT)
+    int recivedClientMethod = 0; // WHAT INFORMATION IS CONTATINED (FOR EXAMPLE 0 IS POSITION OF THE PLAYER) (TO CLIENT)
+    int recivedClientId = 0; // ID OF THE PLAYER (if ID==0, then he can not join) (TO CLIENT)
+    byte[] recivedClientMethodData = new byte[59]; // HERE WILL BE  (TO CLIENT)
     #endregion
 
     private void Awake()
@@ -36,7 +45,7 @@ public class UDPClient : MonoBehaviour
 
     private void Update()
     {
-        SendPlayerInfo();
+        SendInfo();
     }
 
     private void Start()
@@ -44,10 +53,12 @@ public class UDPClient : MonoBehaviour
         endPoint = new IPEndPoint(IPAddress.Parse(host), port);
         receivingUdpClient = new UdpClient();
         player = GameObject.FindWithTag("Player");
+        SendJoinRequest();
 
     }
-    // ----------------- --------------- CONVERTING METHODS--------------------------------------------
-    //-----------------------------------------------------------------------------------------------------------
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ----------------- --------------- CONVERTING METHODS------------------------------------------------------------//
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Converting from short to bytes
     static void FromShort(short number, out byte byte1, out byte byte2)
     {
@@ -60,10 +71,11 @@ public class UDPClient : MonoBehaviour
     {
         number = BitConverter.ToInt16(new byte[] { byte1, byte2 }, 0);
     }
-  //-----------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------
 
-
-    //------------------------ GETTING POSITION OF THE PLYER-------------------------------------------------
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //------------------------ GETTING POSITION OF THE PLYER-----------------------------------------------------------//
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void PlayerPosition()
     {
         Vector3 isMoving = player.GetComponent<Movement>().Velocity;
@@ -79,13 +91,16 @@ public class UDPClient : MonoBehaviour
             FromShort((short)player.transform.position.y, out b1ClientPositionY, out b2ClientPositionY);
             FromShort((short)player.transform.position.z, out b1ClientPositionZ, out b2ClientPositionZ);
 
-            clientMethod = 0;
+            clientMethod = 1;
             clientMethodData = new byte[] { b1ClientPositionX, b2ClientPositionX, b1ClientPositionY, b2ClientPositionY, b1ClientPositionZ, b2ClientPositionZ };
         }
     }
 
-    //------------------------------- SENDING INFORMATION ABOUT PLAYER TO THE SERBER-------------------------------------------
-    public void SendPlayerInfo()
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //------------------------------- SENDING INFORMATION ABOUT PLAYER TO THE SERBER-----------------------------------//
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void SendInfo()
     {
         if (sock == null)
         {
@@ -93,7 +108,7 @@ public class UDPClient : MonoBehaviour
         }
         try
         {
-        // Position of the Player
+            // Position of the Player
             PlayerPosition();
             // WE ARE GIVING CHECKSUM 2 BITES
             byte b1ClientChecksum;
@@ -118,76 +133,98 @@ public class UDPClient : MonoBehaviour
     }
 
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //------------------------------ RECIVING INFO FROM SERVER---------------------------------------------------------//
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void ReciveFromServer()
     {
         try
         {
             receiveBytes = receivingUdpClient.Receive(ref endPoint);
 
-            string returnData = Encoding.ASCII.GetString(receiveBytes);
-
+            byte[] returnData = receiveBytes;
+            #region messagesForClient
             Console.WriteLine("This is the message you received " +
-                                          returnData.ToString());
+                                            returnData.ToString());
             Console.WriteLine("This message was sent from " +
                                         endPoint.Address.ToString() +
                                         " on their port number " +
                                         endPoint.Port.ToString());
-        }
+            #endregion
+            recivedClientId = returnData[3];
+            if (recivedClientId == 0)
+            {
+                Debug.Log("Reject request");
+                SceneManager.LoadScene("AGHunting");
+            }
+            ToShort(out recivedClientChecksum, returnData[1], returnData[2]);
+            recivedClientId = Convert.ToInt32(returnData[4]);
+            recivedClientMethod = Convert.ToInt32(returnData[5]);
 
+            for (int i= 6; i<60; i++)
+            {
+                recivedClientMethodData[i] = returnData[i+6];
+            }
+        }
         catch (Exception e)
         {
             Console.WriteLine(e.ToString());
         }
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //------------------------------- SENDING INFO TO JOIN TO THE SERVER-----------------------------------------------//
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void SendJoinRequest()
+    {
+        clientMethod = 3;
+        foreach(int a in clientMethodData)
+        {
+            clientMethodData[a] = 0;
+        }
+        SendInfo();
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //------------------------------- RECIVING POSITION OF THE PLAYERS__-----------------------------------------------//
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void GetPlayersPosition()
     {
-        if (sock == null)
+
+        short playerPositionX;
+        short playerPositionY;
+        short playerPositionZ;
+
+        numberOfPlayers = Convert.ToInt32(clientMethodData[0]);
+        //______________________________FINISHED HERE_________________________
+        ToShort(out playerPositionX, receiveBytes[1], receiveBytes[2]);
+        ToShort(out playerPositionY, receiveBytes[3], receiveBytes[4]);
+        ToShort(out playerPositionZ, receiveBytes[5], receiveBytes[6]);
+
+
+        // THIS IS ONLY TEST VERSION. STILL WAINTING TILL KACPER WILL TURN ON HIS SERVER XD 
+        GameObject[] players = new GameObject[numberOfPlayers];
+        for (int i = 0; i < numberOfPlayers; i++)
         {
-            return;
+            players[i] = Instantiate(player);
+            Vector3 newPos = new Vector3((float)playerPositionX, (float)playerPositionY, (float)playerPositionZ);
+            players[i].transform.position = newPos;
         }
-        try
+        //Debug.Log(newPos.ToString());
+        //  player.transform.position = newPos;
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //---------------------------------------- INFO CONTROLLER---------------------------------------------------------//
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void Controller()
+    {
+        switch (recivedClientMethod)
         {
-            clientMethod = 1;
-            byte b1ClientChecksum;
-            byte b2ClientChecksum;
-            FromShort(clientChecksum, out b1ClientChecksum, out b2ClientChecksum);
-
-            byte[] message = { 0, b1ClientChecksum, b2ClientChecksum, clientId, clientMethod, 1, 1 };
-
-
-            message[0] = (byte)message.Length;
-            // Write byte array to socketConnection stream.                 
-            sock.SendTo(message, endPoint);
-
-            short playerPositionX;
-            short playerPositionY;
-            short playerPositionZ;
-
-            if (receiveBytes == null)
-            {
-                return;
-            }
-            numberOfPlayers = receiveBytes[0];
-            ToShort(out playerPositionX, receiveBytes[1], receiveBytes[2]);
-            ToShort(out playerPositionY, receiveBytes[3], receiveBytes[4]);
-            ToShort(out playerPositionZ, receiveBytes[5], receiveBytes[6]);
-
-
-            // THIS IS ONLY TEST VERSION. STILL WAINTING TILL KACPER WILL TURN ON HIS SERVER XD 
-            GameObject[] players = new GameObject[numberOfPlayers];
-            for (int i = 0; i < numberOfPlayers; i++)
-            {
-                players[i] = Instantiate(player);
-                Vector3 newPos = new Vector3((float)playerPositionX, (float)playerPositionY, (float)playerPositionZ);
-                players[i].transform.position = newPos;
-            }
-            //Debug.Log(newPos.ToString());
-            //  player.transform.position = newPos;
-        }
-        catch (SocketException socketException)
-        {
-            Debug.Log("Socket exception: " + socketException);
+            case 0: { Debug.Log("ERROR"); break; } 
+            case 1: { break; }
+            case 2: { break; }
         }
     }
 }
