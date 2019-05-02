@@ -35,17 +35,20 @@ public class UDPClient : MonoBehaviour
     int recivedClientMethod = 0; // WHAT INFORMATION IS CONTATINED (FOR EXAMPLE 0 IS POSITION OF THE PLAYER) (TO CLIENT)
     int recivedClientId = 0; // ID OF THE PLAYER (if ID==0, then he can not join) (TO CLIENT)
     byte[] recivedClientMethodData = new byte[59]; // HERE WILL BE  (TO CLIENT)
+
     #endregion
 
     private void Awake()
     {
         host = SecondPlayMeny.host;
         port = SecondPlayMeny.port;
+
     }
 
     private void Update()
     {
         SendInfo();
+        ReciveFromServer();
     }
 
     private void Start()
@@ -151,20 +154,24 @@ public class UDPClient : MonoBehaviour
                                         " on their port number " +
                                         endPoint.Port.ToString());
             #endregion
-            recivedClientId = returnData[3];
+
+            ToShort(out recivedClientChecksum, returnData[1], returnData[2]);
+            recivedClientId = Convert.ToInt32(returnData[3]);
+            recivedClientMethod = Convert.ToInt32(returnData[4]);
+
+            // if recived client id == 0 then we can not join
             if (recivedClientId == 0)
             {
                 Debug.Log("Reject request");
                 SceneManager.LoadScene("AGHunting");
             }
-            ToShort(out recivedClientChecksum, returnData[1], returnData[2]);
-            recivedClientId = Convert.ToInt32(returnData[4]);
-            recivedClientMethod = Convert.ToInt32(returnData[5]);
-
-            for (int i= 6; i<60; i++)
+            // The rest of the comming data is method data
+            for (int i= 5; i<60; i++)
             {
-                recivedClientMethodData[i] = returnData[i+6];
+                recivedClientMethodData[i] = returnData[i+5];
             }
+
+            Controller();
         }
         catch (Exception e)
         {
@@ -186,32 +193,31 @@ public class UDPClient : MonoBehaviour
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //------------------------------- RECIVING POSITION OF THE PLAYERS__-----------------------------------------------//
+    //------------------------------- RECIVING POSITION OF THE PLAYERS AND CREATING THEM-------------------------------//
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void GetPlayersPosition()
     {
+        //first bite from server is a number of the players
+        numberOfPlayers = recivedClientMethodData[0];
 
         short playerPositionX;
         short playerPositionY;
         short playerPositionZ;
 
-        numberOfPlayers = Convert.ToInt32(clientMethodData[0]);
-        //______________________________FINISHED HERE_________________________
-        ToShort(out playerPositionX, receiveBytes[1], receiveBytes[2]);
-        ToShort(out playerPositionY, receiveBytes[3], receiveBytes[4]);
-        ToShort(out playerPositionZ, receiveBytes[5], receiveBytes[6]);
+        PlayerCopy[] playerCopy = new PlayerCopy[numberOfPlayers];
 
-
-        // THIS IS ONLY TEST VERSION. STILL WAINTING TILL KACPER WILL TURN ON HIS SERVER XD 
-        GameObject[] players = new GameObject[numberOfPlayers];
+        // Comming data: NumberOfPlayers + ID + X+Y+Z + ID + X+Y+Z + ID+X+Y+Z but X, Y, Z have 2 bites so distance is 7 bites that is why:
         for (int i = 0; i < numberOfPlayers; i++)
         {
-            players[i] = Instantiate(player);
-            Vector3 newPos = new Vector3((float)playerPositionX, (float)playerPositionY, (float)playerPositionZ);
-            players[i].transform.position = newPos;
+            ToShort(out playerPositionX, recivedClientMethodData[2 + (7 * i)], recivedClientMethodData[3 + (7 * i)]);
+            ToShort(out playerPositionY, recivedClientMethodData[4 + (7 * i)], recivedClientMethodData[5 + (7 * i)]);
+            ToShort(out playerPositionZ, recivedClientMethodData[6 + (7 * i)], recivedClientMethodData[7 + (7 * i)]);
+            // Creating instantiate of players
+            playerCopy[i].player = Instantiate(player);
+            playerCopy[i].ID = recivedClientMethodData[1 + (7 * i)];
+            playerCopy[i].transform.position = new Vector3(playerPositionX, playerPositionY, playerPositionZ);
+
         }
-        //Debug.Log(newPos.ToString());
-        //  player.transform.position = newPos;
     }
 
 
@@ -223,7 +229,7 @@ public class UDPClient : MonoBehaviour
         switch (recivedClientMethod)
         {
             case 0: { Debug.Log("ERROR"); break; } 
-            case 1: { break; }
+            case 1: { GetPlayersPosition(); break; }
             case 2: { break; }
         }
     }

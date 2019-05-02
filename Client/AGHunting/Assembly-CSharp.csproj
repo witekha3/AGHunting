@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\Monster\MonsterInstantiate.cs" />
     <Compile Include="Assets\Scripts\Monster\MonsterMovement.cs" />
     <Compile Include="Assets\Scripts\Network\OwnTCPClient.cs" />
+    <Compile Include="Assets\Scripts\Network\PlayerCopy.cs" />
     <Compile Include="Assets\Scripts\Network\UDPClient.cs" />
     <Compile Include="Assets\Scripts\Player\Attack.cs" />
     <Compile Include="Assets\Scripts\Player\Movement.cs" />
