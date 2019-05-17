@@ -60,13 +60,14 @@ public class UDPconnection : MonoBehaviour
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //------------------------------- SENDING INFORMATION TO THE SERVER------------------------------------------------//
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private void SendToServer()
+    private void SendToServer(int method)
     {
         try
         {
             // WE ARE GIVING CHECKSUM 2 BITES
             byte b1ClientChecksum;
             byte b2ClientChecksum;
+            clientMethod = (byte)method;
             FromShort(clientChecksum, out b1ClientChecksum, out b2ClientChecksum);
             // CREATING MESSAGE FOR THE SERVER
             byte[] message = { 0, b1ClientChecksum, b2ClientChecksum, clientId, clientMethod };
@@ -142,12 +143,12 @@ public class UDPconnection : MonoBehaviour
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void SendJoinRequest()
     {
-        clientMethod = 3;
+        int method = 3;
         foreach (int a in clientMethodData)
         {
             clientMethodData[a] = 0;
         }
-        SendToServer();
+        SendToServer(method);
         ReciveFromServer();
         clientId = recivedClientId;
     }
@@ -157,6 +158,7 @@ public class UDPconnection : MonoBehaviour
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void PlayerPosition()
     {
+        int method = 1;
         Vector3 isMoving = player.GetComponent<Movement>().Velocity;
         if (isMoving != Vector3.zero)
         {
@@ -170,10 +172,9 @@ public class UDPconnection : MonoBehaviour
             FromShort((short)player.transform.position.y, out b1ClientPositionY, out b2ClientPositionY);
             FromShort((short)player.transform.position.z, out b1ClientPositionZ, out b2ClientPositionZ);
 
-            clientMethod = 1;
             clientMethodData = new byte[] { b1ClientPositionX, b2ClientPositionX, b1ClientPositionY, b2ClientPositionY, b1ClientPositionZ, b2ClientPositionZ };
         }
-        SendToServer();
+        SendToServer(method);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
