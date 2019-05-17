@@ -16,6 +16,7 @@ public class UDPClient : MonoBehaviour
     #region NET things	
     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
     IPEndPoint endPoint;
+    IPEndPoint endPoint2;
     UdpClient receivingUdpClient;
     Byte[] receiveBytes;
 
@@ -35,7 +36,7 @@ public class UDPClient : MonoBehaviour
     int recivedClientMethod = 0; // WHAT INFORMATION IS CONTATINED (FOR EXAMPLE 0 IS POSITION OF THE PLAYER) (TO CLIENT)
     int recivedClientId = 0; // ID OF THE PLAYER (if ID==0, then he can not join) (TO CLIENT)
     byte[] recivedClientMethodData = new byte[59]; // HERE WILL BE  (TO CLIENT)
-
+    bool isSended = false;
     #endregion
 
     private void Awake()
@@ -54,10 +55,14 @@ public class UDPClient : MonoBehaviour
     private void Start()
     {
         endPoint = new IPEndPoint(IPAddress.Parse(host), port);
-        receivingUdpClient = new UdpClient();
         player = GameObject.FindWithTag("Player");
-        SendJoinRequest();
+        receivingUdpClient = new UdpClient();
 
+        if (!isSended)
+        {
+            SendJoinRequest();
+            isSended = true;
+        }
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // ----------------- --------------- CONVERTING METHODS------------------------------------------------------------//
@@ -143,22 +148,27 @@ public class UDPClient : MonoBehaviour
     {
         try
         {
+
             receiveBytes = receivingUdpClient.Receive(ref endPoint);
 
             byte[] returnData = receiveBytes;
-            #region messagesForClient
+            String msg = Encoding.ASCII.GetString(receivingUdpClient.Receive(ref endPoint));
+            Debug.Log(msg);
+         /*   #region messagesForClient
             Console.WriteLine("This is the message you received " +
                                             returnData.ToString());
             Console.WriteLine("This message was sent from " +
                                         endPoint.Address.ToString() +
                                         " on their port number " +
                                         endPoint.Port.ToString());
-            #endregion
+            #endregion*/
 
             ToShort(out recivedClientChecksum, returnData[1], returnData[2]);
             recivedClientId = Convert.ToInt32(returnData[3]);
             recivedClientMethod = Convert.ToInt32(returnData[4]);
 
+            string returnData2 = Encoding.ASCII.GetString(returnData);
+            Debug.Log(returnData2.ToString());
             // if recived client id == 0 then we can not join
             if (recivedClientId == 0)
             {
@@ -166,9 +176,9 @@ public class UDPClient : MonoBehaviour
                 SceneManager.LoadScene("AGHunting");
             }
             // The rest of the comming data is method data
-            for (int i= 5; i<60; i++)
+            for (int i = 5; i < 60; i++)
             {
-                recivedClientMethodData[i] = returnData[i+5];
+                recivedClientMethodData[i] = returnData[i + 5];
             }
 
             Controller();
@@ -185,7 +195,7 @@ public class UDPClient : MonoBehaviour
     public void SendJoinRequest()
     {
         clientMethod = 3;
-        foreach(int a in clientMethodData)
+        foreach (int a in clientMethodData)
         {
             clientMethodData[a] = 0;
         }
@@ -228,7 +238,7 @@ public class UDPClient : MonoBehaviour
     {
         switch (recivedClientMethod)
         {
-            case 0: { Debug.Log("ERROR"); break; } 
+            case 0: { Debug.Log("ERROR"); break; }
             case 1: { GetPlayersPosition(); break; }
             case 2: { break; }
         }
